@@ -1,0 +1,328 @@
+/* YuyuPlanner Module Headers
+ * Standardized header styling for all module pages
+ */
+
+/* Common module header styling */
+.module-header,
+.diary-header,
+.skincare-header,
+.cleaning-header,
+.rewards-header,
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+}
+
+/* Module header titles */
+.module-header h2,
+.diary-header h2,
+.skincare-header h2,
+.cleaning-header h2,
+.rewards-header h2,
+.home-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+}
+
+/* Module header icon decoration */
+.module-header h2::before,
+.diary-header h2::before,
+.skincare-header h2::before,
+.cleaning-header h2::before,
+.rewards-header h2::before,
+.home-header h2::before {
+  content: '';
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 15px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Module-specific header icons */
+.cleaning-module .module-header h2::before,
+.cleaning-container .module-header h2::before {
+  background-image: url('../../assets/images/yuwon_clean_icon.png') !important;
+}
+
+.rewards-module .module-header h2::before,
+.rewards-container .module-header h2::before {
+  background-image: url('../../assets/images/noah_rewards_icon.png') !important;
+}
+
+.skincare-module .module-header h2::before,
+.skincare-container .module-header h2::before,
+.skincare-module .skincare-header h2::before,
+.skincare-container .skincare-header h2::before {
+  background-image: url('../../assets/images/jaehyun_skincare_icon.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin-right: 15px !important;
+  display: inline-block !important;
+}
+
+.diary-module .module-header h2::before,
+.diary-container .module-header h2::before,
+.diary-module .diary-header h2::before,
+.diary-container .diary-header h2::before {
+  background-image: url('../../assets/images/minkyu_diary_icon.png') !important;
+}
+
+.avatar-module .module-header h2::before,
+.vanity-module .module-header h2::before {
+  background-image: url('../../assets/images/yuwon_vanity_icon.png') !important;
+}
+
+.blog-module .module-header h2::before {
+  background-image: url('../../assets/images/yuwon_blog_icon.png') !important;
+}
+
+.home-container .module-header h2::before,
+.home-container .home-header h2::before {
+  background-image: url('../../assets/images/yuwon_home_icon.png');
+}
+
+/* Module header underline */
+.module-header h2::after,
+.diary-header h2::after,
+.skincare-header h2::after,
+.cleaning-header h2::after,
+.rewards-header h2::after,
+.home-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 10px;
+}
+
+/* Color-coded headers for modules */
+.home-container .module-header h2::after {
+  background: linear-gradient(to right, #ffb6c1, #ff8da1); /* Pink for Home */
+}
+
+.cleaning-module .module-header h2::after,
+.cleaning-container .module-header h2::after {
+  background: linear-gradient(to right, #ffb6c1, #ff8da1); /* Pink for Cleaning */
+}
+
+.diary-module .module-header h2::after,
+.diary-container .module-header h2::after,
+.diary-header h2::after {
+  background: linear-gradient(to right, #a83252, #c74b6b); /* Burgundy for Diary */
+}
+
+.skincare-module .module-header h2::after,
+.skincare-container .module-header h2::after,
+.skincare-header h2::after {
+  background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for Skincare - updated from orange */
+}
+
+.rewards-module .module-header h2::after,
+.rewards-container .module-header h2::after,
+.rewards-header h2::after {
+  background: linear-gradient(to right, #a2d5a2, #78c278); /* Pastel Jade Green for Rewards */
+}
+
+.avatar-module .module-header h2::after,
+.vanity-module .module-header h2::after {
+  background: linear-gradient(to right, #c8a2c8, #b38eb3); /* Lavender for Vanity - updated from blue */
+}
+
+.blog-module .module-header h2::after {
+  background: linear-gradient(to right, #ffaa77, #ff8844); /* Orange for Blog */
+}
+
+/* Module decorations */
+.cleaning-module::before,
+.rewards-module::before,
+.diary-container::before,
+.skincare-container::before,
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 90px;
+  height: 90px;
+  background-image: url('../../assets/images/kawaii-doodle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.cleaning-module::after,
+.rewards-module::after,
+.diary-container::after,
+.skincare-container::after,
+.home-container::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  width: 80px;
+  height: 80px;
+  background-image: url('../../assets/images/kawaii-flower.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Currency and information displays in headers */
+.module-header .header-info,
+.diary-header .header-info,
+.skincare-header .header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .module-header,
+  .diary-header,
+  .vanity-header,
+  .skincare-header,
+  .cleaning-header,
+  .rewards-header,
+  .home-header,
+  .avatar-header,
+  .reward-header,
+  .cleaning-module .module-header,
+  .rewards-module .module-header,
+  .diary-module .module-header,
+  .skincare-module .module-header,
+  .avatar-module .module-header {
+    justify-content: center !important;
+    text-align: center !important;
+    margin-top: 1rem; /* Reduced top margin on medium screens */
+  }
+
+  .module-header h2,
+  .diary-header h2,
+  .vanity-header h2,
+  .skincare-header h2,
+  .avatar-header h2,
+  .reward-header h2,
+  .cleaning-module .module-header h2,
+  .rewards-module .module-header h2,
+  .diary-module .module-header h2,
+  .skincare-module .module-header h2,
+  .avatar-module .module-header h2 {
+    justify-content: center !important;
+  }
+  
+  /* Override any custom module header styles */
+  .cleaning-module .module-header,
+  .rewards-module .module-header,
+  .diary-module .module-header,
+  .skincare-module .module-header,
+  .avatar-module .module-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 2rem !important;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .module-header,
+  .diary-header,
+  .skincare-header,
+  .cleaning-header,
+  .rewards-header,
+  .home-header,
+  .avatar-header,
+  .cleaning-module .module-header,
+  .rewards-module .module-header,
+  .diary-module .module-header,
+  .skincare-module .module-header,
+  .avatar-module .module-header {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0.5rem; /* Minimal top margin on mobile */
+  }
+  
+  .module-header h2,
+  .diary-header h2,
+  .skincare-header h2,
+  .cleaning-header h2,
+  .rewards-header h2,
+  .home-header h2,
+  .avatar-header h2,
+  .cleaning-module .module-header h2,
+  .rewards-module .module-header h2,
+  .diary-module .module-header h2,
+  .skincare-module .module-header h2,
+  .avatar-module .module-header h2 {
+    font-size: 1.6rem;
+    text-align: center !important;
+    display: flex;
+    justify-content: center !important;
+    width: 100%;
+  }
+  
+  .module-header h2::before,
+  .diary-header h2::before,
+  .skincare-header h2::before,
+  .cleaning-header h2::before,
+  .rewards-header h2::before,
+  .home-header h2::before {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  /* Ensure header icons show correctly on mobile */
+  .skincare-module .skincare-header h2::before,
+  .skincare-container .skincare-header h2::before,
+  .skincare-module .module-header h2::before,
+  .skincare-container .module-header h2::before {
+    background-image: url('../../assets/images/jaehyun_skincare_icon.png') !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 10px !important;
+  }
+
+  .cleaning-module::before,
+  .rewards-module::before,
+  .diary-container::before,
+  .skincare-container::before,
+  .home-container::before,
+  .cleaning-module::after,
+  .rewards-module::after,
+  .diary-container::after,
+  .skincare-container::after,
+  .home-container::after {
+    width: 70px;
+    height: 70px;
+  }
+} 

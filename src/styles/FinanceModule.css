@@ -1,0 +1,538 @@
+/* FinanceModule.css - Yellow themed finance tracker */
+
+/* ===== FINANCE MODULE CORE ===== */
+#yuyu-finance-module {
+  --finance-light-bg: white;
+  --finance-yellow: #ffdd77;
+  --finance-gold: #ffc857;
+  --finance-amber: #ffb347;
+  --finance-shadow: 0 6px 15px rgba(255, 200, 87, 0.25);
+  --finance-border: #ffe1a0;
+  
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem 80px 1rem;
+}
+
+/* Dark mode override for the finance module background */
+.dark-mode #yuyu-finance-module {
+  --finance-light-bg: #2a2a45; /* Match dark theme container color */
+}
+
+/* Module header styling - OUTSIDE the container */
+#yuyu-finance-module .module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+#yuyu-finance-module .module-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #444;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+}
+
+#yuyu-finance-module .module-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--finance-yellow), var(--finance-gold));
+  border-radius: 10px;
+}
+
+#yuyu-finance-module .module-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  vertical-align: middle;
+  object-fit: contain;
+}
+
+/* Main container with unique ID selector */
+#yuyu-finance-container {
+  background-color: var(--finance-light-bg);
+  border-radius: 20px;
+  box-shadow: var(--finance-shadow);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  border: 2px solid var(--finance-border);
+  overflow: hidden;
+}
+
+#yuyu-finance-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to right, var(--finance-yellow), var(--finance-gold), var(--finance-amber));
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* ===== TRANSACTION ITEMS ===== */
+.yuyu-finance-transaction {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+  position: relative;
+  background-color: #fffbef;
+}
+
+.yuyu-finance-transaction:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Transaction categories styling */
+.yuyu-finance-transaction.income {
+  background-color: #f0fff0;
+  position: relative;
+  overflow: hidden;
+}
+
+.yuyu-finance-transaction.expense {
+  background-color: #fff5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.yuyu-finance-transaction.savings {
+  background-color: #f0f5ff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent bar for different transaction types */
+.yuyu-finance-transaction.income::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5px;
+  background-color: #2ecc71;
+  z-index: 1;
+}
+
+.yuyu-finance-transaction.expense::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5px;
+  background-color: #ff7675;
+  z-index: 1;
+}
+
+.yuyu-finance-transaction.savings::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5px;
+  background-color: var(--finance-gold);
+  z-index: 1;
+}
+
+.yuyu-transaction-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.yuyu-transaction-title {
+  font-weight: 500;
+  color: #333;
+}
+
+.yuyu-transaction-date {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 2px;
+}
+
+.yuyu-transaction-flair {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.yuyu-transaction-amount {
+  font-weight: 600;
+  padding-left: 15px;
+}
+
+.yuyu-transaction-amount.income {
+  color: #2ecc71;
+}
+
+.yuyu-transaction-amount.expense {
+  color: #ff7675;
+}
+
+.yuyu-transaction-amount.savings {
+  color: var(--finance-gold);
+}
+
+/* Delete transaction button */
+.yuyu-delete-transaction-button {
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-left: 10px;
+  box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+  padding: 0;
+  line-height: 1;
+  z-index: 3;
+  opacity: 0.8;
+}
+
+.yuyu-delete-transaction-button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 3px 8px rgba(255, 107, 107, 0.4);
+  opacity: 1;
+}
+
+/* Add transaction form */
+.yuyu-add-transaction-form {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.yuyu-transaction-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.yuyu-form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.yuyu-form-group {
+  flex: 1;
+}
+
+.yuyu-form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+}
+
+.yuyu-transaction-type-select,
+.yuyu-flair-select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Type indicators */
+.yuyu-type-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.yuyu-type-icon.income {
+  background-color: #2ecc71;
+}
+
+.yuyu-type-icon.expense {
+  background-color: #ff7675;
+}
+
+.yuyu-type-icon.savings {
+  background-color: var(--finance-gold);
+}
+
+.yuyu-flair-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 6px;
+  font-size: 10px;
+  vertical-align: middle;
+  color: #333;
+  background-color: var(--finance-yellow);
+}
+
+.yuyu-add-transaction-button {
+  padding: 12px 20px;
+  background: linear-gradient(to right, var(--finance-yellow), var(--finance-gold));
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.yuyu-add-transaction-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 200, 87, 0.3);
+}
+
+/* Summary container */
+.yuyu-finance-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.yuyu-summary-card {
+  background-color: var(--finance-light-bg);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: var(--finance-shadow);
+  text-align: center;
+  border: 1px solid var(--finance-border);
+}
+
+.yuyu-summary-title {
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 5px;
+}
+
+.yuyu-summary-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.yuyu-summary-card.income .yuyu-summary-amount {
+  color: #2ecc71;
+}
+
+.yuyu-summary-card.expense .yuyu-summary-amount {
+  color: #ff7675;
+}
+
+.yuyu-summary-card.balance .yuyu-summary-amount {
+  color: var(--finance-gold);
+}
+
+/* Month selector */
+.yuyu-month-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#yuyu-finance-module .yuyu-month-nav-button {
+  background: var(--finance-yellow);
+  border: none;
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% !important;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0;
+}
+
+#yuyu-finance-module .yuyu-month-nav-button:hover {
+  background-color: var(--finance-gold);
+  transform: scale(1.1);
+}
+
+.yuyu-current-month {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Empty state */
+.yuyu-no-transactions {
+  text-align: center;
+  padding: 40px 20px 50px 20px;
+  color: var(--text-color-secondary);
+  margin-bottom: 20px;
+}
+
+.yuyu-no-transactions-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: var(--finance-amber);
+}
+
+/* ===== DARK MODE STYLES ===== */
+.dark-mode #yuyu-finance-container,
+.dark-mode .yuyu-summary-card {
+  background-color: var(--finance-light-bg);
+  border-color: var(--border-color);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.dark-mode .yuyu-transaction-title {
+  color: var(--text-color);
+}
+
+.dark-mode .yuyu-transaction-date {
+  color: #b0b0c0;
+}
+
+.dark-mode .yuyu-transaction-flair {
+  background-color: #3a3a5a;
+  color: #d0d0e0;
+}
+
+.dark-mode .yuyu-finance-transaction.income {
+  background-color: #1c3321;
+}
+
+.dark-mode .yuyu-finance-transaction.expense {
+  background-color: #3d2121;
+}
+
+.dark-mode .yuyu-finance-transaction.savings {
+  background-color: #2f2e18;
+}
+
+.dark-mode .yuyu-add-transaction-form input,
+.dark-mode .yuyu-transaction-type-select,
+.dark-mode .yuyu-flair-select {
+  background-color: var(--input-bg-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.dark-mode .yuyu-form-label,
+.dark-mode .yuyu-summary-title {
+  color: var(--text-color-secondary);
+}
+
+.dark-mode .yuyu-current-month {
+  color: var(--text-color);
+}
+
+.dark-mode #yuyu-finance-module .yuyu-month-nav-button {
+  background: #3a3a5a;
+  color: #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode #yuyu-finance-module .yuyu-month-nav-button:hover {
+  background-color: #4a4a6a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .yuyu-finance-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .yuyu-form-row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  #yuyu-finance-container {
+    padding: 1.5rem;
+  }
+  
+  .yuyu-transaction-amount {
+    font-size: 0.9rem;
+  }
+}
+
+.yuyu-transaction-list {
+  margin-bottom: 25px;
+}
+
+/* Task list header styling */
+.yuyu-task-list-header {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  position: relative;
+  display: block;
+}
+
+/* Add to dark mode styles */
+.dark-mode #yuyu-finance-module .module-title,
+.dark-mode .yuyu-transaction-title,
+.dark-mode .yuyu-task-list-header {
+  color: var(--text-color);
+}
+
+.finance-module-header h2 {
+  font-size: 1.7rem;
+  margin: 0 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #444;
+  font-weight: 600;
+} 

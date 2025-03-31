@@ -1,0 +1,1794 @@
+:root {
+  --primary-color: #ffb6c1; /* Sweeter pink */
+  --secondary-color: #a6e1ff; /* Brighter blue */
+  --tertiary-color: #d1f7c4; /* Fresher mint green */
+  --accent-color: #ffd1f5; /* Lavender */
+  --accent-yellow: #fff2b2; /* Soft yellow */
+  --text-color: #6d6875; /* Softer gray for text */
+  --highlight-color: #ff9cc2; /* Vibrant pink */
+  --white: #ffffff;
+  --light-gray: #f8f8ff; /* Softer light gray */
+  
+  /* RGB values for CSS variables */
+  --primary-color-rgb: 255, 182, 193;
+  --highlight-color-rgb: 255, 156, 194;
+  
+  /* Shadows */
+  --soft-shadow: 0 4px 10px rgba(234, 174, 207, 0.2);
+  --card-shadow: 0 5px 15px rgba(220, 176, 196, 0.25);
+  
+  /* Fonts */
+  --main-font: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Background pattern variables */
+  --bg-pattern-color1: var(--accent-yellow);
+  --bg-pattern-color2: var(--accent-color);
+  --bg-color: #fcfcff;
+  --container-bg-color: var(--white);
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --text-color: #f0f0f0;
+  --bg-color: #1a1a2e;
+  --light-gray: #2a2a3e;
+  --white: #252540;
+  --container-bg-color: #2a2a45; /* Lighter container color that's more visually appealing */
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  --soft-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --bg-pattern-color1: rgba(255, 242, 178, 0.15);
+  --bg-pattern-color2: rgba(255, 209, 245, 0.15);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: var(--main-font);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  background-image: 
+    radial-gradient(var(--bg-pattern-color1) 2px, transparent 2px),
+    radial-gradient(var(--bg-pattern-color2) 2px, transparent 2px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container .logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo-container .logo-link:hover {
+  transform: scale(1.05);
+}
+
+.app-logo {
+  height: 60px;
+  margin-right: 10px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #ffb6da;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 2000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%; /* Force full width */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push to the right */
+  margin-right: 5px; /* Small margin from edge */
+}
+
+/* Add header decorations */
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  background-image: url('assets/images/star.png');
+  background-size: contain;
+  opacity: 0.6;
+  transform: translateY(-50%) rotate(15deg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.App-header::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 15%;
+  width: 25px;
+  height: 25px;
+  background-image: url('assets/images/heart.png');
+  background-size: contain;
+  opacity: 0.6;
+  transform: translateY(-50%) rotate(-10deg);
+  animation: float 3.5s ease-in-out infinite alternate;
+}
+
+.App-header h1 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  position: relative;
+  display: inline-block;
+}
+
+/* Cute underline for header */
+.App-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--highlight-color), transparent);
+  border-radius: 3px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0 0 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: var(--soft-shadow);
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+nav ul li a:hover {
+  background-color: var(--highlight-color);
+  color: var(--white);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Add little icon before menu items */
+nav ul li a::before {
+  content: '✿';
+  margin-right: 5px;
+  font-size: 0.9em;
+  transition: transform 0.3s;
+}
+
+nav ul li a:hover::before {
+  transform: rotate(45deg);
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 100px; /* Add padding = navbar height + extra space */
+}
+
+button {
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.6rem;
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--soft-shadow);
+  font-family: var(--main-font);
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(255, 156, 194, 0.3);
+}
+
+button:hover::after {
+  opacity: 0.5;
+  transform: scale(1);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* Reset button styling */
+.reset-button {
+  background-color: var(--accent-yellow);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.reset-button:hover {
+  background-color: #ffe066;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 224, 102, 0.4);
+}
+
+.card {
+  background-color: var(--container-bg-color);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(220, 176, 196, 0.35);
+}
+
+input, select, textarea {
+  font-family: var(--main-font);
+  border-radius: 15px !important;
+  border: 2px solid var(--accent-color) !important;
+  box-shadow: 0 2px 5px rgba(220, 176, 196, 0.15) !important;
+  transition: all 0.3s !important;
+  padding: 0.7rem 1rem !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none !important;
+  border-color: var(--highlight-color) !important;
+  box-shadow: 0 2px 10px rgba(255, 156, 194, 0.25) !important;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary-color), var(--accent-color));
+  border-radius: 10px;
+  border: 3px solid var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--highlight-color), var(--secondary-color));
+}
+
+/* Card styling adjustments for icons */
+/* 
+ * These module card styles are now moved to home.css
+ * Leaving here commented for reference
+.module-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.module-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 15px;
+  aspect-ratio: 1/1;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
+  min-height: 160px;
+  min-width: 120px;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow);
+}
+
+.module-card-icon {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.module-card-content {
+  text-align: center;
+  width: 100%;
+}
+
+.module-card-content h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.module-card-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+*/
+
+/* For smaller mobile screens */
+@media (max-width: 480px) {
+  /* 
+   * These module card styles are now moved to home.css
+   * Leaving here commented for reference
+  .module-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .module-card {
+    padding: 1.2rem;
+    min-height: 140px;
+  }
+  
+  .module-card-icon {
+    width: 84px;
+    height: 84px;
+  }
+  
+  .module-card-content h2 {
+    font-size: 1rem;
+  }
+  
+  .module-card-content p {
+    font-size: 0.75rem;
+  }
+  */
+
+  /* Mobile-optimized navigation */
+  nav ul {
+    display: none;
+  }
+  
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  /* Fix for today's routine calendar overflow on small screens */
+  .track-today-calendar,
+  .track-today-container,
+  .calendar-container,
+  .calendar-wrapper,
+  .calendar-grid {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 5px !important;
+  }
+  
+  .calendar-cell,
+  .calendar-day {
+    min-width: unset;
+    padding: 5px;
+  }
+  
+  /* Consistent styling between rewards container and headgear shop */
+  .rewards-container,
+  .headgear-shop {
+    padding: 15px !important;
+  }
+
+  /* Create a definitive end to the page before the navbar */
+  .skincare-module {
+    min-height: calc(100vh - 165px) !important; /* Viewport height minus navbar and header */
+    max-height: calc(100vh - 165px) !important;
+    overflow-y: auto !important; /* Make container scrollable */
+    position: relative !important;
+    padding-bottom: 100px !important; /* Ensure last items aren't cut off */
+  }
+  
+  /* Override any conflicting styles */
+  html body .skincare-module {
+    overflow-x: hidden !important;
+    display: block !important;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+  .module-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .module-card {
+    padding: 1.5rem;
+    max-width: 200px;
+    margin: 0 auto;
+    min-height: 160px;
+  }
+  
+  .module-card-icon {
+    width: 108px;
+    height: 108px;
+  }
+}
+
+/* Mobile dropdown navigation */
+.mobile-nav-toggle {
+  display: none;
+  background-color: var(--secondary-color);
+  border-radius: 25px;
+  padding: 0.6rem;
+  width: 42px;
+  height: 42px;
+  margin: 0.5rem auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--text-color);
+  border-radius: 3px;
+  position: absolute;
+  left: 9px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.mobile-nav-toggle span:nth-child(1) {
+  top: 12px;
+}
+
+.mobile-nav-toggle span:nth-child(2) {
+  top: 20px;
+}
+
+.mobile-nav-toggle span:nth-child(3) {
+  top: 28px;
+}
+
+.mobile-nav-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--white);
+  box-shadow: var(--card-shadow);
+  border-radius: 0 0 20px 20px;
+  z-index: 100;
+  overflow: hidden;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.mobile-nav.active {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav ul li {
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.mobile-nav ul li:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.mobile-nav ul li a:hover {
+  background-color: var(--light-gray);
+}
+
+.mobile-nav ul li a::before {
+  content: '✿';
+  margin-right: 8px;
+  font-size: 0.9em;
+}
+
+/* Bottom Navigation Bar - We're using the definitive styling from mobile-nav.css */
+/* Remove any bottom position or margin/padding settings from here */
+.bottom-nav {
+  /* Keep all other styles but remove any position/bottom/height settings */
+}
+
+@media screen and (max-width: 480px) {
+  /* Use the specific classes we added */
+  .nav-blog,
+  .nav-finance {
+    display: none !important;
+  }
+  
+  .bottom-nav {
+    justify-content: space-between !important;
+    padding: 0 10px !important;
+    height: 65px !important; /* Slightly smaller on mobile */
+    /* Remove position and bottom properties - they're in mobile-nav.css */
+  }
+  
+  /* Smaller icons on mobile */
+  .nav-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .nav-label {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Smaller home icon wrapper on mobile if used */
+  .home-icon-wrapper {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  
+  .home-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* Medium Devices (481px-768px) - Hide only Finance */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Hide only Finance using its specific class */
+  .bottom-nav .nav-finance {
+    display: none !important;
+  }
+  
+  /* Make sure Blog is displayed */
+  .bottom-nav .nav-blog {
+    display: flex !important;
+  }
+  
+  .bottom-nav {
+    justify-content: space-between !important;
+    padding: 0 15px !important;
+  }
+}
+
+/* Make sure ALL module containers have enough padding at bottom - MUST BE MORE SPECIFIC */
+.module-container,
+.cleaning-module,
+.diary-module,
+.skincare-module,
+.rewards-module,
+.avatar-module,
+.blog-module,
+.finance-module,
+main,
+.App-main-content > div,
+.App-main-content > main,
+.module-content,
+.page-content {
+  padding-bottom: 90px !important; /* Standard padding for all modules */
+}
+
+/* Override any other padding-bottom that might be causing issues */
+html body .skincare-module,
+html body .rewards-module {
+  padding-bottom: 90px !important; /* Force these problematic modules to have correct padding */
+}
+
+@media (max-width: 480px) {
+  /* Ensure mobile view has sufficient padding */
+  .module-container,
+  .cleaning-module,
+  .diary-module,
+  .skincare-module,
+  .rewards-module,
+  .avatar-module,
+  .blog-module,
+  .finance-module,
+  main,
+  .App-main-content > div,
+  .App-main-content > main,
+  .module-content,
+  .page-content {
+    padding-bottom: 90px !important;
+  }
+}
+
+/* Avatar Module */
+.avatar-module {
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 170px !important;
+}
+
+.avatar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.shop-redirect {
+  text-align: center;
+  background-color: #fff8fa;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 1px dashed #ff99cc;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  color: #555;
+  width: 100%;
+  max-width: 500px;
+}
+
+.shop-redirect a {
+  color: #ff66b3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.shop-redirect a:hover {
+  text-decoration: underline;
+}
+
+.page-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 1rem 0 1.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.page-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, rgba(255, 153, 204, 0.5), rgba(255, 153, 204, 1), rgba(255, 153, 204, 0.5));
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .avatar-module {
+    padding: 0.5rem;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+}
+
+.avatar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  border: 2px solid var(--highlight-color);
+  transition: all 0.3s ease;
+}
+
+.avatar-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 156, 194, 0.6);
+}
+
+.avatar-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+}
+
+/* ProfileBar wrapper */
+.profile-bar-wrapper {
+  padding: 0;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 480px) {
+  .profile-bar-wrapper {
+    padding: 0 10px;
+  }
+}
+
+/* REVISED Settings Styles using DIVs */
+.settings-wrapper {
+  position: relative;
+  z-index: 9999; /* Super high z-index */
+}
+
+.settings-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  overflow: hidden;
+  z-index: 9999; /* Same super high z-index */
+  animation: fadeIn 0.2s ease-out;
+}
+
+.settings-menu-item {
+  padding: 12px 16px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-menu-item .menu-icon {
+  width: 16px;
+  color: var(--highlight-color);
+}
+
+.settings-menu-item:hover {
+  background-color: var(--light-gray);
+  color: var(--highlight-color);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reset confirmation modal */
+.reset-confirmation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  animation: fadeIn 0.3s ease;
+}
+
+.reset-modal {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+
+.reset-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.reset-buttons button {
+  min-width: 100px;
+}
+
+.reset-buttons .danger {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.reset-buttons .danger:hover {
+  background-color: #ff5252;
+}
+
+/* Global section header styling that won't affect skincare */
+.rewards-module h3,
+.task-section h3, 
+.room-section h3 {
+  color: var(--text-color) !important;
+  font-size: 1.4rem !important;
+  margin-bottom: 1rem !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  position: relative !important;
+  display: inline-block !important;
+  background: none !important;
+}
+
+/* Fix for diary inputs alignment */
+.diary-form-row {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.diary-form-row label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.diary-form-row input,
+.diary-form-row textarea {
+  width: 100%;
+  text-align: left;
+}
+
+/* Fix 1 (Continued): Settings Dropdown Z-Index Issue */
+
+/* Boost the container's z-index to ensure it appears above other elements like bottom nav */
+.settings-container-new {
+  position: relative; 
+  z-index: 2999; /* Significantly higher than bottom nav */
+}
+
+/* Ensure the dropdown itself has an even higher z-index */
+.settings-dropdown-new {
+  position: absolute; 
+  top: calc(100% + 8px); 
+  right: 0; 
+  background-color: white;
+  border-radius: 10px; 
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  z-index: 3000; /* Higher than its container */
+  min-width: 160px;
+  overflow: hidden; 
+  padding: 6px 0; 
+  animation: fadeDropdown 0.25s ease-out; 
+  transform-origin: top right;
+}
+
+/* ++ NEW Slim Header Styles ++ */
+.app-header-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Slimmer padding */
+  background-color: var(--primary-color); /* Use kawaii pink */
+  box-shadow: var(--kawaii-soft-shadow);
+  position: relative; /* Establish stacking context */
+  z-index: 1000; /* Base z-index for header */
+  border-bottom-left-radius: 15px; /* Softer radius */
+  border-bottom-right-radius: 15px;
+}
+
+.logo-container-new {
+  /* Styles for logo container if needed */
+}
+
+.logo-link-new {
+  display: block;
+}
+
+.app-logo-new {
+  height: 40px; /* Smaller logo */
+  display: block;
+}
+
+.header-actions-new {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 1rem; /* Space between currency and settings */
+}
+
+.settings-container-rebuilt {
+  position: relative; /* Crucial: Parent for absolute positioning of dropdown */
+  z-index: 1001; /* Needs to be higher than header content, lower than dropdown */
+}
+
+/* Target the existing settings component wrapper inside our container */
+.settings-container-rebuilt .settings-wrapper {
+  /* No specific styles needed here unless adjusting placement */
+}
+
+/* Style the gear icon to match currency items */
+.settings-container-rebuilt .settings-circle {
+  width: 30px; /* Slightly smaller to match currency */
+  height: 30px; /* Slightly smaller to match currency */
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 0.3rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem; /* Slightly smaller icon */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--kawaii-soft-shadow);
+}
+
+.settings-container-rebuilt .settings-circle:hover {
+  background-color: var(--light-gray);
+  color: var(--highlight-color);
+  transform: translateY(-2px) rotate(45deg); /* Add back the spinning animation */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the dropdown menu itself */
+.settings-container-rebuilt .settings-menu {
+  position: absolute; /* Position relative to settings-container-rebuilt */
+  top: calc(100% + 8px); /* Position below the gear icon */
+  right: 0; 
+  background-color: white;
+  border-radius: 10px; 
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  z-index: 3000; /* VERY HIGH z-index to ensure it's on top */
+  min-width: 160px;
+  overflow: hidden; 
+  padding: 6px 0; 
+  animation: fadeDropdown 0.25s ease-out; 
+  transform-origin: top right;
+}
+
+/* Optional: Style for menu items */
+.settings-container-rebuilt .settings-menu-item {
+  /* Use existing styles */
+}
+
+/* Add the fade animation if it doesn't exist */
+@keyframes fadeDropdown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ++ END NEW Slim Header Styles ++ */
+
+/* ++ Responsive Layout for Profile/Currency ++ */
+/* Desktop: Show desktop components, hide mobile bar */
+@media (min-width: 768px) {
+  .profile-bar-wrapper {
+    display: none !important;
+  }
+  
+  .desktop-currency-display,
+  .desktop-avatar-card {
+    display: flex;
+  }
+}
+
+/* Mobile: Hide desktop components, show mobile bar */
+@media (max-width: 767px) {
+  .profile-bar-wrapper {
+    display: block;
+  }
+  
+  .desktop-currency-display,
+  .desktop-avatar-card {
+    display: none !important;
+  }
+}
+
+/* About page styling */
+.about-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.about-page::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background-image: url('./assets/images/kawaii-doodle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.about-page::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-image: url('./assets/images/kawaii-flower.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.about-page h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  font-size: 2.2rem;
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+}
+
+.about-page h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--highlight-color), var(--secondary-color));
+  border-radius: 10px;
+}
+
+.about-content {
+  text-align: left;
+  line-height: 1.8;
+  padding: 2.5rem;
+  border-radius: 25px;
+  position: relative;
+  border: 2px solid #f9f9f9;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(255, 182, 193, 0.2);
+  background-color: white;
+}
+
+.about-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(to right, var(--primary-color), var(--highlight-color), var(--secondary-color));
+  z-index: 1;
+}
+
+.about-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/images/notebook-pattern.png');
+  background-size: 300px;
+  opacity: 0.05;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.about-mascot {
+  width: 150px;
+  height: 150px;
+  background-image: url('./assets/images/yuwon_veryhappy.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 1.5rem;
+  animation: bounce 2s ease infinite;
+}
+
+.about-content h2 {
+  color: var(--highlight-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  position: relative;
+  display: inline-block;
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+}
+
+.about-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--highlight-color), transparent);
+  border-radius: 2px;
+}
+
+.about-content p {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-content ul {
+  padding-left: 0.5rem;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.8rem;
+}
+
+.about-content li {
+  margin-bottom: 0.8rem;
+  background-color: var(--light-gray);
+  padding: 0.8rem 1.2rem;
+  border-radius: 15px;
+  transition: all 0.3s;
+  font-size: 1rem;
+  border-left: 3px solid var(--primary-color);
+}
+
+.about-content li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tech-item {
+  background: linear-gradient(to right, var(--primary-color), var(--highlight-color));
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 3px 8px rgba(255, 182, 193, 0.3);
+  transition: all 0.3s;
+}
+
+.tech-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+}
+
+.about-version {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+  border-top: 1px dashed var(--light-gray);
+  padding-top: 1.2rem;
+}
+
+/* Animation for bouncing mascot */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Mobile adjustments for About page */
+@media (max-width: 480px) {
+  .about-page {
+    padding: 1rem;
+    margin: 1rem auto;
+    background-color: transparent;
+  }
+  
+  .about-page h1 {
+    font-size: 1.8rem;
+  }
+  
+  .about-content {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about-mascot {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .about-content ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark mode adjustments for About page */
+.dark-mode .about-content {
+  background-color: #262641;
+  border-color: #333355;
+}
+
+/* Dark mode specific card adjustments */
+.dark-mode .card {
+  border: 1px solid #333355; 
+}
+
+.dark-mode .settings-menu,
+.dark-mode .reset-modal {
+  background-color: #252540;
+  border: 1px solid #333355;
+}
+
+.dark-mode .bottom-nav {
+  background-color: #252540;
+  border-top: 2px solid var(--primary-color);
+}
+
+/* Fix disabled buttons in dark mode to make them more visible */
+.dark-mode button.disabled,
+.dark-mode .reward-card button.disabled {
+  background-color: #4a4a60 !important;
+  color: #aaaaaa !important;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Dark mode transitions */
+.App, .card, .settings-menu, button, 
+.bottom-nav, .app-header-new, .reset-modal {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Module containers styling */
+.module-container, 
+.rewards-container, 
+.diary-container, 
+.skincare-container, 
+.avatar-module,
+.rewards-module,
+.about-page {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background-color: transparent;
+  overflow: visible;
+}
+
+/* Remove specific container styles that create borders or backgrounds */
+.rewards-container,
+.diary-container,
+.skincare-container,
+.cleaning-container,
+.avatar-container {
+  background-color: transparent;
+  position: relative;
+  overflow: visible;
+}
+
+/* Fix inconsistent header alignment across modules */
+.module-header,
+.diary-header,
+.skincare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  text-align: left; /* Make sure all headers are left-aligned */
+}
+
+/* Make all module headers consistently left-aligned on mobile */
+@media (max-width: 767px) {
+  .module-header h2,
+  .diary-header h2,
+  .skincare-header h2 {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Dark mode styles for all forms and containers - more specific to override default styles */
+.dark-mode .card,
+.dark-mode .diary-entry-form,
+.dark-mode .add-room-form,
+.dark-mode .skincare-tracker,
+.dark-mode .reward-card,
+.dark-mode .add-reward-form,
+.dark-mode form.card,
+.dark-mode .diary-form,
+.dark-mode .diary-entry-view,
+.dark-mode .headgear-card,
+.dark-mode .skincare-entry-form,
+.dark-mode .rewards-container {
+    background-color: #262641 !important;
+    border-color: #333355;
+}
+
+/* Fix for rewards container */
+.rewards-container {
+  background-color: white; /* Set to white in light mode */
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05); 
+  padding: 25px !important;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 2px solid #f9f9f9;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Fix for the gradient border overflow - using exact styling from headgear shop */
+.rewards-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--primary-color), var(--highlight-color));
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  z-index: 1;
+}
+
+/* Add decorative pattern background like in headgear shop */
+.rewards-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/images/notebook-pattern.png');
+  background-size: 300px;
+  opacity: 0.03;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Dark mode styles for rewards-container */
+.dark-mode .rewards-container {
+  background-color: #1a1a2e !important;
+  border-color: #333355;
+  box-shadow: var(--card-shadow);
+}
+
+/* Fix for "Available rewards" h3 header - match headgear shop exactly */
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.shop-header h3 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 8px 0;
+}
+
+/* Room card improvements to match other containers */
+.room-card {
+  width: 100%;
+  transition: all 0.3s ease;
+  border-radius: 20px !important;
+  position: relative;
+  background-color: var(--container-bg-color);
+  border: 2px solid #f9f9f9;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 25px !important;
+  margin-bottom: 20px;
+}
+
+/* Add gradient border at the top like other containers */
+.room-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--primary-color), var(--highlight-color));
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  z-index: 1;
+}
+
+/* Add decorative pattern background like other containers */
+.room-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/images/notebook-pattern.png');
+  background-size: 300px;
+  opacity: 0.03;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Fix room header styling to be consistent */
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1rem;
+}
+
+/* Dark mode styles for room cards */
+.dark-mode .room-card {
+  background-color: #262641 !important;
+  border-color: #333355;
+}
+
+.dark-mode .room-header {
+  border-bottom: 1px solid #333355;
+}
+
+/* Make room cards responsive */
+@media (max-width: 768px) {
+  .room-card {
+    padding: 20px !important;
+  }
+
+  .room-header h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-card {
+    padding: 15px !important; 
+  }
+
+  .task-list {
+    margin-bottom: 1rem;
+  }
+
+  .add-task-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .add-task-form input,
+  .add-task-form select,
+  .add-task-form button {
+    margin: 0;
+  }
+}
+
+/* ========== CLEANING MODULE STYLES ========== */
+
+/* Adjusting cleaning module to match other modules size */
+.cleaning-module {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.room-tabs-container {
+  margin: 15px 0;
+  overflow-x: auto;
+}
+
+.room-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 5px 0;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.room-tab, 
+.add-room-tab {
+  background-color: white;
+  border: 1px solid var(--light-gray);
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.task-counter {
+  margin-left: 6px;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+.room-card {
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.room-image-container {
+  height: 180px;
+  margin-bottom: 15px;
+}
+
+/* Make sure room details match other containers */
+.room-details {
+  margin-top: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .room-tab, 
+  .add-room-tab {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .room-card {
+    padding: 15px;
+  }
+  
+ .room-image-container {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cleaning-module, 
+  .rewards-module,
+  .diary-container,
+  .skincare-container {
+    /* Consistent padding for all modules */
+    padding: 0 10px;
+  }
+}
+
+/* Remove conflicting cleaning module form styles */
+@media (max-width: 480px) {
+  .cleaning-module .add-task-form {
+    display: none !important; /* Hide any duplicate forms */
+  }
+  
+  /* Let kawaii-modules.css handle the actual form */
+  .cleaning-module .room-details .add-task-form {
+    display: flex !important;
+  }
+}
+
+/* Fix for eDfVlL class and similar auto-generated styled-components classes */
+div[class*="eDfVlL"],
+div[class*="ebjaNV"],
+html body div[class*="eDfVlL"],
+html body div[class*="ebjaNV"] {
+  background-color: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.25) !important;
+  padding: 2rem !important;
+  margin-bottom: 1.5rem !important;
+  position: relative !important;
+  border: 2px solid #ffcce6 !important;
+  overflow: hidden !important;
+}
+
+/* Dark mode fixes with high specificity */
+.dark-mode div[class*="eDfVlL"],
+.dark-mode div[class*="ebjaNV"],
+html.dark-mode body div[class*="eDfVlL"],
+html.dark-mode body div[class*="ebjaNV"] {
+  background-color: var(--container-bg-color) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25) !important;
+  color: var(--text-color) !important;
+}
+
+/* Extra padding specifically for the avatar module */
+.avatar-module {
+  padding-bottom: 170px !important;
+}
+
+.cleaning-deco-flower {
+  position: absolute;
+  bottom: 120px !important; /* Move it further up from bottom to not interfere with navbar */
+  left: 10%;
+  width: 80px;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Dark mode styles for the navbar */
+.dark-mode .bottom-nav {
+  background-color: #252540 !important;
+  border-top: 2px solid var(--primary-color) !important;
+}
+
+/* Fix for any issues with dark mode on expanded navbar */
+.dark-mode .bottom-nav.expanded {
+  background-color: #252540 !important;
+}
+
+/* Make pagination buttons circular */
+.circular-button {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}

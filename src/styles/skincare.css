@@ -1,0 +1,1716 @@
+/* Kawaii Skincare Module Styling */
+:root {
+    /* Skincare-specific color palette */
+    --skincare-pink: #ffcce6;
+    --skincare-blue: #e6d2b5; /* Beige for skincare */
+    --skincare-lavender: #e0d0ff;
+    --skincare-mint: #d8c4a5; /* Darker beige for skincare */
+    --skincare-peach: #ffdbc9;
+    --skincare-yellow: #ffe9a3;
+    --skincare-purple: #e6d2b5; /* Beige for skincare */
+    
+    /* Text colors for better contrast */
+    --text-dark: #4a4a4a;
+    
+    /* Patterns */
+    --bubble-pattern: radial-gradient(circle, var(--skincare-blue) 1px, transparent 2px);
+    --droplet-pattern: radial-gradient(ellipse at top, var(--skincare-mint) 1px, transparent 3px);
+    
+    /* Shadows */
+    --skincare-shadow: 0 6px 15px rgba(230, 210, 181, 0.35); /* Beige shadow */
+    --sticker-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Container */
+  .skincare-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    position: relative;
+    overflow: visible;
+    background-color: transparent;
+  }
+  
+  .skincare-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    width: 120px;
+    height: 120px;
+    background-image: url('../assets/images/kawaii-skincare.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Header */
+  .skincare-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  .skincare-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .skincare-header h2::before {
+    /* Remove the emoji content that's causing overlap */
+    content: none;
+  }
+  
+  .skincare-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for skincare */
+    border-radius: 10px;
+  }
+  
+  /* Routine Tracker Card */
+  .skincare-container .skincare-tracker,
+  .skincare-tracker {
+    background-color: white !important;
+    border-radius: 20px !important;
+    box-shadow: var(--skincare-shadow) !important;
+    padding: 2rem !important;
+    margin-bottom: 2.5rem !important;
+    position: relative !important;
+    border: 2px solid #cdbaa2 !important; /* More earthy beige for skincare */
+    overflow: hidden !important;
+  }
+  
+  .skincare-container .skincare-tracker::before,
+  .skincare-tracker::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 8px !important;
+    background: linear-gradient(to right, #957c65, #ecddc5) !important; /* Earthy beige gradient */
+    z-index: 5 !important; /* Ensure it's above other elements */
+  }
+  
+  .skincare-tracker h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .skincare-tracker h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #e6d2b5, transparent); /* Beige for skincare */
+  }
+  
+  /* Date Picker - New Styled Version with stronger overrides */
+  .date-picker {
+    display: flex;
+    flex-direction: column; /* Always stack vertically for consistency */
+    background-color: white;
+    padding: 0 !important;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--skincare-shadow);
+    border: 2px solid #e6d2b5; /* Beige for skincare */
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .date-picker-header {
+    background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for skincare */
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+  
+  .date-picker-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--droplet-pattern);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  .date-picker-header label {
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    padding-left: 0 !important; /* Ensure no unexpected padding */
+    width: auto !important; /* Prevent stretching */
+    overflow: visible !important; /* Prevent content clipping */
+  }
+  
+  .date-picker-header label::before {
+    content: '📅';
+    font-size: 1.1em;
+    display: inline-block !important; /* Ensure proper display */
+    flex-shrink: 0 !important; /* Prevent icon from shrinking */
+    margin-right: 8px !important; /* Consistent spacing */
+  }
+  
+  .date-picker-content {
+    padding: 15px 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* SUPER AGGRESSIVE OVERRIDES FOR INPUT DATE */
+  .skincare-container .date-picker-content input[type="date"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    border: 2px solid #e6d2b5 !important; /* Beige for skincare */
+    background-color: white !important;
+    border-radius: 10px !important;
+    padding: 10px 15px !important; /* Increased left/right padding */
+    font-family: 'Quicksand', sans-serif !important;
+    color: var(--text-dark) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 1rem !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    display: block !important;
+    position: relative !important;
+    text-indent: 5px !important; /* Additional text indent for date value */
+  }
+  
+  .skincare-container .date-picker-content input[type="date"]:focus {
+    outline: none !important;
+    border-color: #d8c4a5 !important; /* Darker beige for focus */
+    box-shadow: 0 0 6px rgba(230, 210, 181, 0.4) !important; /* Beige glow */
+  }
+  
+  /* Template Selector */
+  .template-selector {
+    margin-bottom: 1.5rem;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--skincare-shadow);
+    border: 2px solid #e6d2b5; /* Beige for skincare */
+  }
+  
+  .template-selector-header {
+    background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for skincare */
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+  }
+  
+  .template-selector-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--droplet-pattern);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  .template-selector h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .template-selector h4::before {
+    content: '🧴';
+    font-size: 1.1em;
+    margin-right: 8px;
+  }
+  
+  .template-content {
+    background-color: white;
+    padding: 1.2rem;
+  }
+  
+  .template-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  
+  .template-option {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .template-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .template-card {
+    background-color: var(--light-gray);
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    min-width: 120px;
+    border: 2px dashed transparent;
+  }
+  
+  .template-option:hover .template-card {
+    transform: translateY(-3px);
+    box-shadow: var(--sticker-shadow);
+  }
+  
+  .template-option input[type="radio"]:checked + .template-card {
+    border-color: var(--skincare-blue);
+    box-shadow: 0 6px 12px rgba(230, 210, 181, 0.3);
+    transform: translateY(-5px);
+    background-color: rgba(230, 210, 181, 0.2);
+  }
+  
+  .template-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .template-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    text-align: center;
+  }
+  
+  .template-desc {
+    font-size: 0.75rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* Custom Step Input */
+  .custom-step-input {
+    display: flex;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+  
+  .custom-step-input input {
+    flex: 1;
+    border-radius: 10px !important;
+    border: 2px solid #e6d2b5 !important; /* Beige for skincare */
+    padding: 0.5rem 1rem !important;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .add-step-button {
+    background-color: #e6d2b5; /* Beige for skincare */
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--sticker-shadow);
+  }
+  
+  .add-step-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(230, 210, 181, 0.4); /* Beige glow */
+  }
+  
+  .add-step-button:active {
+    transform: translateY(0);
+  }
+  
+  .custom-steps-list {
+    margin-top: 0.8rem;
+  }
+  
+  .custom-steps-list h5 {
+    margin: 0.8rem 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+  }
+  
+  .custom-step-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e6d2b5; /* Beige for skincare */
+    transition: all 0.3s;
+  }
+  
+  .custom-step-item:hover {
+    transform: translateX(5px);
+  }
+  
+  .remove-step {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .remove-step:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Routine Sections */
+  .routine-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .routine-section {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--sticker-shadow);
+    overflow: hidden;
+    border: 1px solid #e6d2b5; /* Beige for skincare */
+  }
+  
+  .section-header {
+    background-color: #e6d2b5; /* Beige for skincare */
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Morning section with specific pastel blue gradient */
+  .morning-section .section-header,
+  .new-section-header.morning {
+    background: linear-gradient(to right, #a6d4ff, #d6eaff) !important; /* Pastel blue gradient for morning */
+  }
+  
+  /* Evening section with specific purple gradient */
+  .evening-section .section-header,
+  .new-section-header.evening {
+    background: linear-gradient(to right, #8577ba, #d4befc) !important; /* Dark purple gradient for evening */
+  }
+  
+  .section-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  
+  .morning-section .section-title::before {
+    content: '🌞';
+    font-size: 1.1em;
+  }
+  
+  .evening-section .section-title::before {
+    content: '🌙';
+    font-size: 1.1em;
+  }
+  
+  .section-toggle {
+    position: relative;
+  }
+  
+  .section-toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-switch {
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .section-toggle input[type="checkbox"]:checked + .toggle-switch {
+    background-color: #d8c4a5; /* Darker beige for skincare */
+  }
+  
+  .section-toggle input[type="checkbox"]:checked + .toggle-switch::after {
+    transform: translateX(24px);
+  }
+  
+  .section-content {
+    padding: 1.2rem;
+  }
+  
+  /* Steps Checklist */
+  .steps-checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .step-item {
+    margin-bottom: 10px;
+    transition: all 0.2s;
+    border-radius: 8px;
+    background-color: var(--light-gray);
+    padding: 8px 12px;
+  }
+  
+  .step-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .step-item label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .step-item input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--skincare-pink);
+    width: 18px;
+    height: 18px;
+    /* Ensure checkbox is always visible */
+    opacity: 1;
+    position: static;
+  }
+  
+  .step-label {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: color 0.2s, text-decoration 0.2s, opacity 0.2s;
+    font-weight: 500;
+    /* Ensure label doesn't start crossed out */
+    text-decoration: none;
+    opacity: 1;
+  }
+  
+  /* Apply line-through only when the checkbox is checked */
+  .step-item input[type="checkbox"]:checked + .step-label {
+    text-decoration: line-through;
+    opacity: 0.7;
+    color: #888; /* Optional: slightly gray out the text */
+  }
+  
+  /* Additional Steps */
+  .additional-steps {
+    margin-top: 1.2rem;
+    border-top: 1px dashed #e6d2b5; /* Beige for skincare */
+    padding-top: 1.2rem;
+  }
+  
+  .additional-steps h5 {
+    margin: 0 0 0.8rem 0;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .additional-steps h5::before {
+    content: '✨';
+    font-size: 1em;
+  }
+  
+  /* Notes Section */
+  .notes-input {
+    margin-top: 1.5rem;
+    border-top: 1px dashed #e6d2b5; /* Beige for skincare */
+    padding-top: 1.5rem;
+  }
+  
+  .notes-input label {
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .notes-input label::before {
+    content: '📝';
+    font-size: 1em;
+  }
+  
+  .notes-input textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid #e6d2b5 !important; /* Beige for skincare */
+    border-radius: 15px !important;
+    font-family: 'Quicksand', sans-serif;
+    resize: vertical;
+    background-color: white;
+    transition: all 0.3s;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+    line-height: 1.6;
+    box-sizing: border-box;
+  }
+  
+  .notes-input textarea:focus {
+    outline: none;
+    border-color: #d8c4a5 !important; /* Darker beige for focus */
+    box-shadow: 0 0 8px rgba(230, 210, 181, 0.4) !important; /* Beige glow */
+  }
+  
+  /* Warning Message */
+  .entry-exists-message {
+    background-color: var(--skincare-yellow);
+    padding: 1.2rem;
+    border-radius: 15px;
+    margin: 1.2rem 0;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: var(--sticker-shadow);
+  }
+  
+  .entry-exists-message::before {
+    content: '⚠️';
+    font-size: 1.5rem;
+  }
+  
+  /* Save Button */
+  .save-routine-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for skincare */
+    color: var(--text-dark);
+    font-weight: 700;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 1.5rem auto 0;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+    box-shadow: var(--sticker-shadow);
+    width: auto;
+  }
+  
+  .save-routine-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(230, 210, 181, 0.4); /* Beige glow */
+  }
+  
+  .save-routine-button:active {
+    transform: translateY(-1px);
+  }
+  
+  .save-routine-button::before {
+    content: '✅';
+    font-size: 1.2rem;
+  }
+  
+  .save-routine-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* History Section */
+  .history-header {
+    font-size: 1.5rem;
+    margin: 2rem 0 1.5rem;
+    position: relative;
+    display: inline-block;
+    color: var(--text-dark);
+  }
+  
+  .history-header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for skincare */
+    border-radius: 3px;
+  }
+  
+  .month-header {
+    margin: 1.5rem 0 0.8rem 0;
+    color: var(--text-dark);
+    border-bottom: 2px dashed var(--skincare-blue);
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  
+  .month-header::before,
+  .month-header::after {
+    content: '✿';
+    position: absolute;
+    top: 0;
+    font-size: 0.8em;
+    color: var(--skincare-pink);
+  }
+  
+  .month-header::before {
+    left: 20%;
+  }
+  
+  .month-header::after {
+    right: 20%;
+  }
+  
+  .month-entries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+  
+  /* Entry Card */
+  .skincare-entry-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--skincare-shadow);
+    overflow: hidden;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .skincare-entry-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(230, 210, 181, 0.5); /* Beige shadow */
+    border-color: var(--skincare-mint);
+  }
+  
+  .entry-card-date {
+    background: linear-gradient(to right, var(--skincare-blue), var(--skincare-mint));
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .entry-card-date::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--droplet-pattern);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  .entry-card-date span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .entry-routines {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .routine-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--light-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    box-shadow: var(--sticker-shadow);
+    transition: all 0.3s;
+  }
+  
+  .morning-status {
+    border-left: 3px solid var(--skincare-peach);
+  }
+  
+  .evening-status {
+    border-left: 3px solid var(--skincare-lavender);
+  }
+  
+  .routine-status.completed {
+    background-color: rgba(201, 247, 231, 0.3);
+  }
+  
+  .routine-label {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+  }
+  
+  .morning-status .routine-label::before {
+    content: '🌞';
+    margin-right: 5px;
+    font-size: 0.8em;
+  }
+  
+  .evening-status .routine-label::before {
+    content: '🌙';
+    margin-right: 5px;
+    font-size: 0.8em;
+  }
+  
+  .routine-status.completed .routine-label {
+    font-weight: bold;
+  }
+  
+  .entry-notes {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px dashed var(--skincare-blue);
+    margin-top: auto;
+    position: relative;
+  }
+  
+  .entry-notes::before {
+    content: '📝';
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+    font-size: 0.9em;
+  }
+  
+  .entry-notes p {
+    margin: 0;
+    padding-left: 25px;
+  }
+  
+  /* Use Diary's empty state style */
+  .empty-entries-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: 2px dashed #e6d2b5; /* Beige for skincare */
+    margin: 2rem auto;
+    max-width: 400px;
+    position: relative;
+  }
+  
+  .empty-entries-message::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -80%);
+    /* Ensure correct path from skincare.css */
+    background-image: url('../assets/images/icons/emptyentry.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+  }
+  
+  .empty-entries-message p {
+    margin: 120px 0 0; /* Adjusted margin-top */
+    font-size: 1.1rem;
+    color: var(--text-dark); /* Keep skincare text color */
+  }
+  
+  .empty-entries-message img { /* Hide accidental img tags */
+    display: none;
+  }
+  
+  /* Decorative Elements */
+  .skincare-deco {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .skincare-deco.top-right {
+    top: -20px;
+    right: -15px;
+    transform: rotate(15deg);
+  }
+  
+  .skincare-deco.bottom-left {
+    bottom: -20px;
+    left: -15px;
+    transform: rotate(-10deg);
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .skincare-tracker {
+      padding: 1.5rem;
+    }
+    
+    .steps-checklist {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .month-entries {
+      grid-template-columns: 1fr;
+    }
+    
+    .template-options {
+      justify-content: center;
+    }
+    
+    .routine-sections {
+      gap: 1rem;
+    }
+    
+    .entry-routines {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .routine-status {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .skincare-tracker {
+      padding: 1.2rem;
+    }
+    
+    .skincare-header h2 {
+      font-size: 1.6rem;
+    }
+    
+    .steps-checklist {
+      grid-template-columns: 1fr;
+    }
+    
+    /* Strong overrides for date picker on mobile */
+    .skincare-container .date-picker {
+      flex-direction: column;
+      align-items: stretch;
+      min-width: 0 !important; /* Allow shrinking */
+      max-width: 100% !important;
+    }
+    
+    .skincare-container .date-picker-header {
+      padding: 10px 15px !important;
+    }
+    
+    .skincare-container .date-picker-content {
+      padding: 12px 15px !important;
+      min-width: 0 !important;
+      width: 100% !important;
+    }
+    
+    .skincare-container .date-picker-content input[type="date"] {
+      font-size: 0.8rem !important; /* Even smaller on mobile */
+      padding: 6px 8px !important; /* Reduce padding further */
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important; /* Prevent overflow */
+    }
+    
+    .template-card {
+      min-width: 100px;
+      padding: 0.6rem 1rem;
+    }
+  }
+  
+  /* High-priority overrides for perfect circular elements - REMOVING THESE */
+  /* 
+  .skincare-container .step-item input[type="checkbox"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 26px !important;
+    height: 26px !important;
+    border: 2px solid var(--skincare-blue) !important;
+    border-radius: 50% !important; 
+    outline: none !important;
+    background-color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .skincare-container .step-item input[type="checkbox"]:checked {
+    background-color: var(--skincare-mint) !important;
+    border-color: var(--skincare-mint) !important;
+  }
+  
+  .skincare-container .step-item input[type="checkbox"]:checked::after {
+    content: '✓' !important;
+    position: absolute !important;
+    font-size: 14px !important;
+    top: 2px !important;
+    left: 5px !important;
+    color: var(--text-dark) !important;
+    font-weight: bold !important;
+  }
+  */
+  
+  .skincare-container .remove-step {
+    background-color: rgba(255, 77, 77, 0.1) !important;
+    border: none !important;
+    color: #ff4d4d !important;
+    border-radius: 50% !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    transition: all 0.2s !important;
+  }
+  
+  .skincare-container .remove-step:hover {
+    background-color: rgba(255, 77, 77, 0.2) !important;
+    transform: scale(1.2) !important;
+  }
+
+  /* Let's make sure our module header formatting still works */
+  .skincare-container .diary-header h2::before,
+  .skincare-container .module-header h2::before {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+
+  /* --- New Routine Sections Styling --- */
+
+  .new-routine-sections {
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .new-routine-section {
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: var(--skincare-shadow);
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .new-routine-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(201, 247, 231, 0.4);
+  }
+  
+  /* Morning step items with blue accent */
+  .new-routine-section:nth-child(1) .new-step-item,
+  .morning-status {
+    border-left-color: #a6d4ff !important; /* Pastel blue for morning */
+  }
+  
+  /* Evening step items with purple accent */
+  .new-routine-section:nth-child(2) .new-step-item,
+  .evening-status {
+    border-left-color: #8577ba !important; /* Dark purple for evening */
+  }
+  
+  /* Additional section with accent colors */
+  .new-routine-section:nth-child(3) {
+    border-color: #e6d2b5; /* Beige for skincare */
+  }
+
+  .new-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    position: relative;
+  }
+  
+  /* Morning header gradient */
+  .new-section-header.morning {
+    background: linear-gradient(to right, #a6d4ff, #6bb5ff); /* Pastel blue gradient for morning */
+  }
+  
+  /* Evening header gradient */
+  .new-section-header.evening {
+    background: linear-gradient(to right, #9370db, #6a4b9e); /* Dark purple gradient for evening */
+  }
+  
+  /* Additional header gradient */
+  .new-section-header.additional {
+    background: linear-gradient(to right, #e6d2b5, #d8c4a5); /* Beige for skincare */
+  }
+  
+  .new-section-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--droplet-pattern);
+    background-size: 30px 30px;
+    opacity: 0.2;
+    z-index: 0;
+  }
+
+  .new-section-header h4 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .new-toggle-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+    color: var(--text-dark);
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  .new-toggle-all input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Custom toggle switch styling */
+  .new-toggle-all .toggle-switch {
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .new-toggle-all .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .new-toggle-all input[type="checkbox"]:checked + .toggle-switch {
+    background-color: var(--skincare-mint);
+  }
+  
+  .new-toggle-all input[type="checkbox"]:checked + .toggle-switch::after {
+    transform: translateX(24px);
+  }
+
+  .new-steps-container {
+    padding: 20px;
+  }
+
+  .new-steps-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .new-step-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95em;
+    border-left: 3px solid transparent;
+  }
+  
+  /* Morning step items */
+  .new-routine-section:nth-child(1) .new-step-item {
+    border-left-color: #e6d2b5; /* Beige for skincare */
+  }
+  
+  /* Evening step items */
+  .new-routine-section:nth-child(2) .new-step-item {
+    border-left-color: #e6d2b5; /* Beige for skincare */
+  }
+  
+  /* Additional step items */
+  .new-routine-section:nth-child(3) .new-step-item {
+    border-left-color: #e6d2b5; /* Beige for skincare */
+  }
+
+  .new-step-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Custom checkbox styling for the steps with stronger overrides */
+  .skincare-container .new-step-item input[type="checkbox"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 22px !important;
+    height: 22px !important;
+    border: 2px solid #e6d2b5 !important; /* Beige for skincare */
+    border-radius: 50% !important; /* Perfect circle */
+    outline: none !important;
+    background-color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    flex-shrink: 0 !important; /* Prevent checkbox from shrinking */
+    min-width: 22px !important; /* Ensure fixed width */
+    max-width: 22px !important; /* Ensure fixed width */
+    min-height: 22px !important; /* Ensure fixed height */
+    max-height: 22px !important; /* Ensure fixed height */
+    padding: 0 !important; /* CRITICAL: Remove any padding */
+    margin: 0 !important; /* Remove any margin */
+    box-sizing: border-box !important; /* Include border in element size */
+    position: relative !important;
+  }
+  
+  .skincare-container .new-step-item input[type="checkbox"]:checked {
+    background-color: #d8c4a5 !important; /* Darker beige for skincare */
+    border-color: #d8c4a5 !important; /* Darker beige for skincare */
+  }
+  
+  .skincare-container .new-step-item input[type="checkbox"]:checked::after {
+    content: '✓' !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  
+  /* Style for checked items */
+  .new-step-item input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    opacity: 0.7;
+    color: #888;
+  }
+  
+  /* Add a span for the step text */
+  .new-step-text {
+    flex: 1;
+    transition: all 0.2s;
+    text-align: left;
+    padding-left: 3px;
+  }
+
+  /* Toggle switch styling */
+  .new-toggle-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+    color: var(--text-dark);
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  .new-toggle-all .toggle-switch {
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .new-steps-list {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .new-steps-list {
+      grid-template-columns: 1fr;
+    }
+    
+    /* Fix for toggle going down - keep header as row */
+    .new-section-header {
+      flex-direction: row; /* Keep as row instead of column */
+      justify-content: space-between; /* Space items apart */
+      align-items: center; /* Center items vertically */
+      flex-wrap: nowrap; /* Prevent wrapping */
+      gap: 10px;
+    }
+    
+    /* No need to realign the toggle since we're keeping row layout */
+    .new-toggle-all {
+      align-self: center;
+    }
+  }
+
+  /* --- End New Routine Sections Styling --- */
+
+  /* Fix the hover glow on skincare cards */
+  .skincare-container .routine-section:hover,
+  .skincare-container .new-routine-section:hover {
+    box-shadow: 0 10px 20px rgba(230, 210, 181, 0.35) !important; /* Beige shadow instead of cyan */
+  }
+
+  /* Ensure entry cards use the correct colors too */
+  .morning-section .entry-card-date {
+    background: linear-gradient(to right, #a6d4ff, #d6eaff) !important; /* Pastel blue gradient for morning */
+  }
+
+  .evening-section .entry-card-date {
+    background: linear-gradient(to right, #8577ba, #d4befc) !important; /* Dark purple gradient for evening */
+  }
+
+  /* Additional fixes for new routine sections */
+  .new-routine-section:nth-child(1) {
+    border-color: #a6d4ff !important; /* Pastel blue for morning */
+  }
+
+  .new-routine-section:nth-child(2) {
+    border-color: #8577ba !important; /* Dark purple for evening */
+  }
+
+  /* Fix the hover glow for sections with appropriate colors */
+  .new-routine-section:nth-child(1):hover {
+    box-shadow: 0 10px 20px rgba(166, 212, 255, 0.35) !important; /* Blue shadow for morning */
+  }
+
+  .new-routine-section:nth-child(2):hover {
+    box-shadow: 0 10px 20px rgba(133, 119, 186, 0.35) !important; /* Purple shadow for evening */
+  }
+
+  /* Stronger override for routine section headers */
+  .routine-section.morning-section .section-header {
+    background: linear-gradient(to right, #a6d4ff, #d6eaff) !important; /* Pastel blue gradient for morning */
+    color: #333 !important;
+  }
+
+  .routine-section.evening-section .section-header {
+    background: linear-gradient(to right, #8577ba, #d4befc) !important; /* Dark purple gradient for evening */
+    color: #333 !important;
+  }
+
+  /* Skincare Dark Mode */
+  .dark-mode .skincare-container {
+    color: var(--text-color);
+  }
+
+  .dark-mode .skincare-tracker {
+    background-color: var(--container-bg-color) !important;
+    border-color: #5f503c !important; /* Darker beige border */
+  }
+
+  .dark-mode .skincare-tracker::before {
+    background: linear-gradient(to right, #6d5c45, #957c65) !important; /* Darker beige gradient */
+  }
+
+  .dark-mode .skincare-tracker h3 {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .skincare-tracker h3::after {
+    background: linear-gradient(to right, transparent, #957c65, transparent) !important;
+    opacity: 0.5;
+  }
+
+  .dark-mode .date-picker {
+    background-color: var(--card-bg-color) !important;
+    border-color: #5f503c !important;
+  }
+
+  .dark-mode .date-picker-header {
+    background: linear-gradient(to right, #7d6c55, #957c65) !important; /* Darker beige header */
+  }
+
+  .dark-mode .date-picker-header label {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .skincare-container .date-picker-content input[type="date"] {
+    background-color: var(--input-bg-color) !important;
+    border-color: #5f503c !important;
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .skincare-container .date-picker-content input[type="date"]:focus {
+    border-color: #957c65 !important;
+    box-shadow: 0 0 6px rgba(149, 124, 101, 0.4) !important;
+  }
+
+  .dark-mode .template-selector {
+    border-color: #5f503c !important;
+  }
+
+  .dark-mode .template-selector-header {
+    background: linear-gradient(to right, #7d6c55, #957c65) !important; /* Darker beige header */
+  }
+
+  .dark-mode .template-selector h4 {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .template-content {
+    background-color: var(--card-bg-color) !important;
+  }
+
+  .dark-mode .template-card {
+    background-color: var(--light-gray) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .dark-mode .template-option:hover .template-card {
+    background-color: #3a3a5a !important;
+  }
+
+  .dark-mode .template-option input[type="radio"]:checked + .template-card {
+    border-color: #957c65 !important;
+    background-color: #4a4a60 !important;
+  }
+
+  .dark-mode .template-name,
+  .dark-mode .template-desc {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .custom-step-input input {
+    background-color: var(--input-bg-color) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .add-step-button {
+    background: linear-gradient(to right, #7d6c55, #957c65) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .dark-mode .add-step-button:hover {
+    background: linear-gradient(to right, #957c65, #b09c85) !important;
+  }
+
+  .dark-mode .custom-steps-list h5 {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .custom-step-item {
+    background-color: var(--light-gray) !important;
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .remove-step {
+    color: #ff6b6b;
+  }
+
+  .dark-mode .routine-section {
+    background-color: var(--card-bg-color) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .dark-mode .section-header {
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+
+  .dark-mode .section-title {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .toggle-switch {
+    background-color: #4a4a60 !important;
+  }
+
+  .dark-mode .toggle-switch::after {
+    background-color: #888 !important;
+  }
+
+  .dark-mode .section-toggle input[type="checkbox"]:checked + .toggle-switch {
+    background-color: #957c65 !important; /* Darker beige for checked */
+  }
+
+  .dark-mode .section-toggle input[type="checkbox"]:checked + .toggle-switch::after {
+    background-color: #fff !important;
+  }
+
+  .dark-mode .step-item {
+    border-bottom-color: var(--border-color) !important;
+  }
+
+  .dark-mode .step-label {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .step-item input[type="checkbox"]:checked + .step-label {
+    color: #888 !important;
+  }
+
+  .dark-mode .additional-steps h5 {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .notes-input textarea {
+    background-color: var(--input-bg-color) !important;
+    border-color: #5f503c !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .dark-mode .notes-input textarea:focus {
+    border-color: #957c65 !important;
+    color: white !important;
+  }
+
+  .dark-mode .entry-exists-message {
+    background-color: var(--container-bg-color) !important;
+    border-color: #5f503c !important;
+    color: var(--text-color-secondary) !important;
+  }
+
+  .dark-mode .save-routine-button {
+    background: linear-gradient(to right, #6d5c45, #957c65) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  .dark-mode .save-routine-button:hover {
+    background: linear-gradient(to right, #957c65, #b09c85) !important;
+    color: white !important;
+  }
+
+  .dark-mode .history-header {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .history-header::after {
+    background: linear-gradient(to right, transparent, #957c65, transparent) !important;
+  }
+
+  .dark-mode .month-header {
+    background-color: var(--card-bg-color) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .dark-mode .month-header span {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .skincare-entry-card {
+    background-color: var(--card-bg-color) !important;
+    border-color: #5f503c !important;
+  }
+
+  .dark-mode .entry-card-date {
+    color: var(--text-color-secondary) !important;
+  }
+
+  .dark-mode .routine-label {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .routine-status.completed .routine-label {
+    color: #888 !important;
+  }
+
+  .dark-mode .entry-notes {
+    background-color: var(--light-gray) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .dark-mode .entry-notes p {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .empty-entries-message {
+    background-color: var(--container-bg-color) !important;
+    border-color: #5f503c !important;
+    color: var(--text-color-secondary) !important;
+  }
+
+  .dark-mode .new-routine-section {
+    background-color: var(--container-bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+  }
+
+  .dark-mode .new-step-item {
+    background-color: #424264;
+    color: var(--text-color);
+  }
+
+  /* Override any other padding-bottom values in this file */
+  .skincare-tracker,
+  .skincare-container,
+  .skincare-content,
+  .skincare-section {
+    padding-bottom: 0 !important; /* Override any fixed padding values */
+  }
+
+  /* Fix mobile history container padding */
+  .skincare-history-container {
+    margin-bottom: 30px; /* Default margin */
+  }
+
+  /* Mobile-specific fixes to prevent navbar overlap */
+  @media (max-width: 480px) {
+    .skincare-history-container {
+      margin-bottom: 100px !important; /* Extra margin on mobile to clear navbar */
+      padding-bottom: 20px !important;
+    }
+    
+    /* Add a visible "end of page" indicator before navbar */
+    .skincare-module::after {
+      content: '';
+      display: block;
+      height: 10px;
+      width: 30%;
+      background: linear-gradient(to right, transparent, var(--highlight-color), transparent);
+      border-radius: 5px;
+      margin: 0 auto 90px auto; /* Space before navbar */
+      opacity: 0.5;
+    }
+  }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="YuyuPlanner: A kawaii self-care and productivity app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Yuyu Planner Lite</title>
+    
+    <!-- Fallback styles to ensure text visibility -->
+    <style>
+      /* Global text color fixes - highest priority overrides */
+      .dark-mode body {
+        color: #e0e0e0 !important;
+      }
+      
+      /* Universal text color fixes for dark mode */
+      .dark-mode h1, 
+      .dark-mode h2, 
+      .dark-mode h3, 
+      .dark-mode h4, 
+      .dark-mode h5, 
+      .dark-mode h6, 
+      .dark-mode .module-title,
+      .dark-mode .module-header h2,
+      .dark-mode .section-title,
+      .dark-mode .inventory-title,
+      .dark-mode .headgear-inventory h3,
+      .dark-mode .headgear-inventory h2 {
+        color: #ffffff !important;
+      }
+      
+      .dark-mode p,
+      .dark-mode span,
+      .dark-mode div,
+      .dark-mode li,
+      .dark-mode td,
+      .dark-mode label,
+      .dark-mode .settings-menu-item,
+      .dark-mode .headgear-name,
+      .dark-mode .headgear-description,
+      .dark-mode .headgear-item p,
+      .dark-mode .empty-collection {
+        color: #e0e0e0 !important;
+      }
+      
+      /* Settings menu and hamburger menu fixes */
+      .dark-mode .settings-menu {
+        background-color: var(--container-bg-color) !important;
+      }
+      
+      .dark-mode .settings-menu-item {
+        color: #e0e0e0 !important;
+      }
+      
+      .dark-mode .settings-menu-item:hover {
+        background-color: var(--light-gray) !important;
+        color: var(--highlight-color) !important;
+      }
+      
+      /* Link colors in dark mode */
+      .dark-mode a,
+      .dark-mode .link,
+      .dark-mode .empty-collection a {
+        color: #ff99cc !important;
+      }
+      
+      /* Avatar module fixes */
+      .dark-mode .avatar-module .headgear-inventory h2,
+      .dark-mode .avatar-module .headgear-name {
+        color: #ffffff !important;
+      }
+      
+      .dark-mode .avatar-module .headgear-description,
+      .dark-mode .avatar-module .empty-collection {
+        color: #e0e0e0 !important;
+      }
+
+      /* Extra breathing room for all pages to avoid navbar overlap */
+      .avatar-module {
+        padding-bottom: 170px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

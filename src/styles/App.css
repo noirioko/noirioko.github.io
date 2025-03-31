@@ -1,0 +1,8 @@
+.cleaning-deco-flower {
+  position: absolute;
+  bottom: 85px !important; /* Move it up from bottom */
+  left: 10%;
+  width: 80px;
+  opacity: 0.5;
+  z-index: -1;
+} 

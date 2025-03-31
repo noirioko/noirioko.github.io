@@ -1,0 +1,370 @@
+/* YuyuPlanner CSS - Main Import File
+ * This file imports all modular CSS files in the correct order
+ */
+
+/* Import base styles first */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/forms.css';
+
+/* Import layout styles */
+@import './layout/modules.css';
+@import './layout/headers.css';
+
+/* Import component styles */
+@import './components/desktop-currency.css';
+@import './components/desktop-avatar.css';
+@import './new-profile-bar.css'; /* New ID Card styles */
+@import './components/mobile-nav.css'; /* Mobile navigation */
+
+/* Import module-specific styles */
+@import './skincare.css';
+@import './home.css';
+@import './blog.css';
+
+/* Note: Other module styles will be added here as they are modularized */
+
+/* Add this to your index.css file - Common Module Header Styles section */
+
+/* Module headers - standardized across ALL modules */
+.module-header,
+.diary-header,
+.vanity-header,
+.skincare-header,
+.avatar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  height: 48px;
+}
+
+.module-header h2,
+.diary-header h2,
+.vanity-header h2,
+.skincare-header h2,
+.avatar-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.module-header h2::before,
+.diary-header h2::before,
+.vanity-header h2::before,
+.skincare-header h2::before,
+.avatar-header h2::before {
+  content: '';
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+/* Unified header underline styling */
+.module-header h2::after,
+.diary-header h2::after,
+.vanity-header h2::after,
+.skincare-header h2::after,
+.avatar-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--highlight-color));
+  border-radius: 10px;
+}
+
+/* Add Module-specific header icons */
+.cleaning-module .module-header h2::before {
+  background-image: url('../assets/images/yuwon_clean_icon.png');
+}
+
+/* Add another selector to ensure the cleaning module icon is properly shown */
+.cleaning-container .module-header h2::before,
+.cleaning-module .module-header h2::before {
+  background-image: url('../assets/images/yuwon_clean_icon.png');
+}
+
+.rewards-module .module-header h2::before {
+  background-image: url('../assets/images/noah_rewards_icon.png');
+}
+
+/* Add skincare module header icon */
+.skincare-container .module-header h2::before,
+.skincare-module .module-header h2::before {
+  background-image: url('../assets/images/jaehyun_skincare_icon.png');
+}
+
+/* Add diary module header icon */
+.diary-container .module-header h2::before,
+.diary-module .module-header h2::before {
+  background-image: url('../assets/images/minkyu_diary_icon.png');
+}
+
+/* Add avatar/vanity module header icon if you have one */
+.avatar-container .module-header h2::before,
+.vanity-module .module-header h2::before {
+  background-image: url('../assets/images/yuwon_veryhappy.png');
+}
+
+/* Add blog module header icon */
+.blog-container .module-header h2::before,
+.blog-module .module-header h2::before {
+  background-image: url('../assets/images/yuwon_blog_icon.png');
+}
+
+/* Top navigation bar styling */
+.app-header-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: linear-gradient(to right, #ffcce6, #ffddec);
+  box-shadow: 0 2px 8px rgba(255, 204, 230, 0.2);
+  position: relative;
+  z-index: 10;
+  border-radius: 0;
+}
+
+.app-header-new::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/dot-pattern.png');
+  background-size: 200px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 0;
+}
+
+/* Header content wrapper to center on larger screens */
+.header-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logo-container-new {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link-new {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.app-logo-new {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.header-actions-new {
+  display: flex;
+  align-items: center;
+}
+
+/* Improved settings container */
+.settings-container-rebuilt {
+  position: relative;
+}
+
+/* Add direct skincare tracker styles to override any conflicts */
+.skincare-container .skincare-tracker,
+.skincare-tracker {
+  background-color: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 6px 15px rgba(230, 210, 181, 0.35) !important;
+  padding: 2rem !important;
+  margin-bottom: 2.5rem !important;
+  position: relative !important;
+  border: 2px solid #cdbaa2 !important; /* More earthy beige for skincare */
+  overflow: hidden !important;
+}
+
+.skincare-container .skincare-tracker::before,
+.skincare-tracker::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 8px !important;
+  background: linear-gradient(to right, #957c65, #ecddc5) !important; /* Earthy beige gradient */
+  z-index: 5 !important; /* Ensure it's above other elements */
+}
+
+/* Dark mode styles for modules and containers */
+.dark-mode .about-page {
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+}
+
+.dark-mode .diary-container,
+.dark-mode .avatar-container,
+.dark-mode .skincare-container,
+.dark-mode .cleaning-container,
+.dark-mode .rewards-container,
+.dark-mode .blog-container {
+  /* Container background is handled by their specific modules */
+  color: var(--text-color);
+}
+
+.dark-mode .about-content,
+.dark-mode .card, 
+.dark-mode .diary-cards .diary-entry,
+.dark-mode .skincare-tracker,
+.dark-mode .avatar-customizer,
+.dark-mode .avatar-card,
+.dark-mode .headgear-collection,
+.dark-mode .blog-post,
+.dark-mode .cleaning-task-container,
+.dark-mode .cleaning-task-item,
+.dark-mode .headgear-shop,
+.dark-mode .headgear-item {
+  background-color: var(--card-bg-color) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Dark mode styles for settings icon */
+.dark-mode .settings-circle {
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.dark-mode .settings-menu {
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.dark-mode .settings-menu-item {
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dark-mode .settings-menu-item:hover {
+  background-color: var(--light-gray);
+}
+
+/* Dark mode style for headings in about page */
+.dark-mode .about-page h1,
+.dark-mode .about-page h2,
+.dark-mode .about-page h3 {
+  color: var(--highlight-color) !important;
+}
+
+.dark-mode .about-page p,
+.dark-mode .about-page li {
+  color: var(--text-color) !important;
+}
+
+/* Update currency icon styling to ensure proper dimensions */
+.desktop-currency-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain !important;
+  margin-right: 8px !important;
+}
+
+/* Ensure font awesome icons don't get stretched */
+.fa, .fas, svg[class*="fa-"] {
+  width: 1em !important;
+  height: 1em !important;
+}
+
+/* Global color consistency - ensure all modules follow the color scheme */
+.dark-mode .module-header h2,
+.dark-mode .diary-header h2,
+.dark-mode .vanity-header h2,
+.dark-mode .skincare-header h2,
+.dark-mode .avatar-header h2,
+.dark-mode h2.title,
+.dark-mode h3.title,
+.dark-mode .panel-heading,
+.dark-mode .card-header,
+.dark-mode .headgear-inventory h3,
+.dark-mode .inventory-title,
+.dark-mode .section-title {
+  color: #ffffff !important; /* Pure white for all headings in dark mode */
+}
+
+.dark-mode p,
+.dark-mode .card-content,
+.dark-mode .panel-content,
+.dark-mode .note-content,
+.dark-mode .task-description,
+.dark-mode .item-description,
+.dark-mode .headgear-item p,
+.dark-mode .vanity-container p,
+.dark-mode .diary-entry-content,
+.dark-mode .diary-content,
+.dark-mode .avatar-content,
+.dark-mode .skincare-content,
+.dark-mode .cleaning-content,
+.dark-mode .task-text,
+.dark-mode .item-text,
+.dark-mode label,
+.dark-mode .form-label,
+.dark-mode .card-text {
+  color: #e0e0e0 !important; /* Light gray for content text in dark mode */
+}
+
+/* Light mode heading and content color consistency */
+.module-header h2,
+.diary-header h2,
+.vanity-header h2,
+.skincare-header h2,
+.avatar-header h2,
+h2.title,
+h3.title,
+.panel-heading,
+.card-header,
+.headgear-inventory h3,
+.inventory-title,
+.section-title {
+  color: var(--text-color) !important; /* Dark gray for all headings in light mode */
+}
+
+p,
+.card-content,
+.panel-content,
+.note-content,
+.task-description,
+.item-description,
+.headgear-item p,
+.vanity-container p,
+.diary-entry-content,
+.diary-content,
+.avatar-content,
+.skincare-content,
+.cleaning-content,
+.task-text,
+.item-text,
+label,
+.form-label,
+.card-text {
+  color: var(--text-color-secondary) !important; /* Medium gray for content text in light mode */
+} 

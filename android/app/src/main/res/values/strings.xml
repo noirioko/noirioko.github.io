@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">YuyuPlanner Lite</string>
+    <string name="title_activity_main">YuyuPlanner Lite</string>
+    <string name="package_name">com.yuyuplanner.app</string>
+    <string name="custom_url_scheme">com.yuyuplanner.app</string>
+</resources>

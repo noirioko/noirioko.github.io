@@ -1,0 +1,1753 @@
+/* Kawaii Diary Module Styling */
+:root {
+    /* Diary-specific color palette */
+    --diary-pink: #ffcce6;
+    --diary-blue: #ccf2ff;
+    --diary-purple: #e6ccff;
+    --diary-yellow: #fffacc;
+    --diary-mint: #ccffe6;
+    
+    /* Paper patterns */
+    --paper-lines: linear-gradient(#ffcce6 1px, transparent 1px);
+    --paper-grid: linear-gradient(#ffcce6 1px, transparent 1px),
+                  linear-gradient(90deg, #ffcce6 1px, transparent 1px);
+    --paper-dots: radial-gradient(#ffcce6 1px, transparent 1px);
+    
+    /* Drop shadows */
+    --diary-shadow: 0 6px 15px rgba(255, 182, 193, 0.25);
+    --sticker-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Diary Container */
+  .diary-container {
+    /* Remove border and background specific styling */
+    max-width: 900px; 
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 80px; /* Keep this for spacing above nav bar */
+    overflow: visible;
+    background-color: transparent;
+  }
+  
+  .diary-container::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -15px;
+    width: 100px;
+    height: 100px;
+    background-image: url('../assets/images/icons/diary_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .diary-container::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -25px;
+    width: 80px;
+    height: 80px;
+    background-image: url('../assets/images/kawaii-flower.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: -1;
+    animation: float 7s ease-in-out infinite reverse;
+  }
+  
+  /* Diary Header */
+  .diary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  .diary-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .diary-header h2::before {
+    /* Remove the emoji content that's causing overlap */
+    content: none;
+  }
+  
+  /* Let's make sure our module header formatting still works */
+  .diary-container .diary-header h2::before {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+  
+  .diary-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #a83252, #c74b6b); /* Burgundy for diary */
+    border-radius: 10px;
+  }
+  
+  /* New Entry Form */
+  .diary-entry-form {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: var(--diary-shadow);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    border: 2px solid #e5c5cd; /* Burgundy-tinted border */
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .diary-entry-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, #a83252, #c74b6b); /* Burgundy for diary */
+  }
+  
+  .diary-form-title {
+    font-size: 1.4rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .diary-form-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--diary-purple), transparent);
+  }
+  
+  .diary-form-subtitle {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 1rem 0;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .diary-form-subtitle::before {
+    content: '♥';
+    margin-right: 8px;
+    color: var(--diary-pink);
+  }
+  
+  /* Mood Selection */
+  .mood-selection {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .mood-option {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .mood-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .mood-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border-radius: 15px;
+    transition: all 0.3s;
+    background-color: white;
+    border: 2px dashed transparent;
+  }
+  
+  .mood-option:hover .mood-icon {
+    transform: translateY(-3px);
+  }
+  
+  .mood-option input[type="radio"]:checked + .mood-icon {
+    background-color: var(--diary-yellow);
+    border-color: var(--highlight-color);
+    transform: translateY(-5px);
+    box-shadow: var(--sticker-shadow);
+  }
+  
+  .mood-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+  
+  .mood-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 600;
+  }
+  
+  /* Diary Text Area */
+  .diary-textarea-container {
+    margin: 1.5rem 0;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .diary-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1.2rem;
+    border: 2px solid #e5c5cd !important; /* Burgundy-tinted border */
+    border-radius: 15px !important;
+    resize: vertical;
+    font-family: 'Quicksand', sans-serif;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  .diary-textarea.lined-paper {
+    background-image: var(--paper-lines);
+    background-size: 100% 32px;
+    line-height: 32px;
+    padding-top: 1.2rem;
+  }
+  
+  .diary-textarea.grid-paper {
+    background-image: var(--paper-grid);
+    background-size: 30px 30px;
+    line-height: 30px;
+  }
+  
+  .diary-textarea.dot-paper {
+    background-image: var(--paper-dots);
+    background-size: 20px 20px;
+  }
+  
+  .diary-textarea:focus {
+    outline: none;
+    border-color: var(--highlight-color) !important;
+    box-shadow: 0 0 10px rgba(255, 156, 194, 0.2);
+  }
+  
+  .paper-style-selector {
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 5;
+  }
+  
+  .paper-style-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--sticker-shadow);
+    overflow: hidden;
+  }
+  
+  .paper-style-button:hover,
+  .paper-style-button.active {
+    transform: scale(1.1);
+  }
+  
+  .paper-lines {
+    background-color: white;
+    background-image: var(--paper-lines);
+    background-size: 100% 8px;
+  }
+  
+  .paper-grid {
+    background-color: white;
+    background-image: var(--paper-grid);
+    background-size: 8px 8px;
+  }
+  
+  .paper-dots {
+    background-color: white;
+    background-image: var(--paper-dots);
+    background-size: 5px 5px;
+  }
+  
+  .paper-blank {
+    background-color: white;
+  }
+  
+  /* Additional Entry Sections */
+  .diary-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  
+  .diary-section {
+    border: 1px dashed var(--diary-purple);
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+    position: relative;
+    margin-top: 28px; /* Added space for peeking icons */
+    z-index: 2; /* Above the icons */
+    box-sizing: border-box;
+  }
+  
+  .diary-section:focus-within {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 8px rgba(255, 156, 194, 0.15);
+    transform: translateY(-3px);
+  }
+  
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+  }
+  
+  /* Reset all previous icon positioning to avoid conflicts */
+  .diary-section .section-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Individual positioning for each icon */
+  /* Gratitude icon */
+  .diary-section:nth-child(1) .section-icon[alt="Gratitude"] {
+    top: -4px !important;
+    left: 7px !important;
+    background-color: transparent;
+  }
+  
+  /* Achievement icon */
+  .diary-section:nth-child(2) .section-icon[alt="Achievement"] {
+    top: -4px !important;
+    left: 7px !important;
+    background-color: transparent;
+  }
+  
+  /* Self Care icon */
+  .diary-section:nth-child(3) .section-icon[alt="Self Care"] {
+    top: -4px !important;
+    left: 7px !important;
+    background-color: transparent;
+  }
+  
+  /* Tomorrow icon positioning (moved right) - this MUST appear after the general rules to override them */
+  .diary-section:last-child .section-icon {
+    width: 24px !important;
+    height: 24px !important;
+    position: static !important; /* Override absolute positioning */
+    margin-right: 0.5rem !important;
+    margin-left: 7px !important;
+    background-color: transparent !important;
+    animation: none !important; /* Disable animations */
+    transform: none !important; /* Disable transforms */
+  }
+  
+  .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+  }
+  
+  .section-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--diary-purple) !important;
+    border-radius: 10px !important;
+    font-family: 'Quicksand', sans-serif;
+    resize: none;
+    background-color: white;
+    transition: all 0.3s;
+    min-height: 60px;
+    position: relative;
+    z-index: 3; /* Keep input above everything */
+    box-sizing: border-box;
+  }
+  
+  .section-input:focus {
+    outline: none;
+    border-color: var(--highlight-color) !important;
+    box-shadow: 0 0 6px rgba(255, 156, 194, 0.15);
+  }
+  
+  /* Ensure there's no weird gap at the top of text inputs */
+  .diary-section .section-input {
+    margin-top: -1px; /* Overlap slightly with the hamster */
+    border-top-width: 2px !important; /* Ensure border is visible */
+  }
+  
+  /* Save Button */
+  .save-entry-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: linear-gradient(to right, var(--diary-pink), var(--diary-purple));
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 1.5rem auto 0;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+    box-shadow: var(--sticker-shadow);
+    width: auto;
+  }
+  
+  .save-entry-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 156, 194, 0.3);
+  }
+  
+  .save-entry-button:active {
+    transform: translateY(-1px);
+  }
+  
+  .save-entry-button::before {
+    content: '💖';
+    font-size: 1.2rem;
+  }
+  
+  /* Entry List */
+  .diary-entries-title {
+    font-size: 1.5rem;
+    margin: 2rem 0 1.5rem;
+    position: relative;
+    display: inline-block;
+    color: var(--text-color);
+  }
+  
+  .diary-entries-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--diary-blue), var(--diary-purple));
+    border-radius: 3px;
+  }
+  
+  .entries-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .empty-entries-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: 2px dashed var(--primary-color);
+    margin: 2rem auto;
+    max-width: 400px;
+    position: relative;
+  }
+  
+  .empty-entries-message::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -80%);
+    background-image: url('../assets/images/icons/emptyentry.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+  }
+  
+  .empty-entries-message p {
+    margin: 120px 0 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+  }
+  
+  .empty-entries-message img {
+    display: none;
+  }
+  
+  /* Entry Card */
+  .entry-card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: var(--diary-shadow);
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  
+  .entry-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(255, 182, 193, 0.3);
+    border-color: var(--highlight-color);
+  }
+  
+  .entry-card-header {
+    background: linear-gradient(to right, var(--diary-pink), var(--diary-purple));
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .entry-date {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .entry-date::before {
+    content: '📅';
+    font-size: 1em;
+  }
+  
+  .entry-mood-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: var(--sticker-shadow);
+  }
+  
+  .entry-card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+  }
+  
+  .entry-snippet {
+    color: var(--text-color);
+    line-height: 1.5;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+  
+  .entry-snippet::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--diary-purple);
+    border-radius: 3px;
+  }
+  
+  .entry-section-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+  
+  .entry-section-tag {
+    background-color: var(--diary-yellow);
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-color);
+    box-shadow: var(--sticker-shadow);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  .entry-section-tag img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+  
+  /* Full Entry View */
+  .diary-entry-view {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: var(--diary-shadow);
+    padding: 0;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid var(--diary-pink);
+    box-sizing: border-box;
+  }
+  
+  .entry-view-header {
+    background: linear-gradient(to right, var(--diary-pink), var(--diary-purple));
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .entry-view-date-mood {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .entry-view-date {
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .entry-view-mood {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: var(--sticker-shadow);
+    object-fit: contain;
+  }
+  
+  .back-button {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+  }
+  
+  .back-button::before {
+    content: '←';
+    font-weight: bold;
+  }
+  
+  .entry-view-content {
+    padding: 2rem;
+    background-color: white;
+    background-image: var(--paper-lines);
+    background-size: 100% 32px;
+    line-height: 32px;
+    min-height: 200px;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .entry-view-content.grid-paper {
+    background-image: var(--paper-grid);
+    background-size: 30px 30px;
+    line-height: 30px;
+  }
+  
+  .entry-view-content.dot-paper {
+    background-image: var(--paper-dots);
+    background-size: 20px 20px;
+  }
+  
+  .entry-view-content.blank-paper {
+    background-image: none;
+  }
+  
+  .entry-view-content p {
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .entry-view-sections {
+    padding: 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .entry-view-section {
+    background-color: var(--light-gray);
+    padding: 1.2rem;
+    border-radius: 15px;
+    position: relative;
+    margin-top: 25px; /* Space for peeking icon */
+    z-index: 2; /* Above the icons */
+  }
+  
+  .entry-view-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--diary-purple);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    z-index: 4; /* Above icons, below content */
+  }
+  
+  .entry-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .entry-section-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+  
+  .entry-section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-color);
+  }
+  
+  .entry-section-content {
+    color: var(--text-color);
+    line-height: 1.5;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 4; /* Above icons */
+    box-sizing: border-box;
+  }
+  
+  /* Entry view section special styling for peeking icons */
+  .entry-view-section {
+    margin-top: 25px; /* Space for peeking icon */
+  }
+  
+  /* Gratitude section */
+  .entry-view-section:first-child .entry-section-icon {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: -4px !important;
+    left: 7px !important;
+    z-index: 1 !important;
+  }
+  
+  /* Achievement section */
+  .entry-view-section:nth-child(2) .entry-section-icon {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: -4px !important;
+    left: 7px !important;
+    z-index: 1 !important;
+  }
+  
+  /* Self Care section */
+  .entry-view-section:nth-child(3) .entry-section-icon {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: -4px !important;
+    left: 7px !important;
+    z-index: 1 !important;
+  }
+  
+  /* Adjust titles for sections with peeking icons */
+  .entry-view-section:nth-child(-n+3) .entry-section-title {
+    margin-left: 45px !important;
+  }
+  
+  /* Decoration Elements */
+  .diary-sticker {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    z-index: 2;
+    transform: rotate(-10deg);
+  }
+  
+  .diary-sticker.top-right {
+    top: -20px;
+    right: -15px;
+  }
+  
+  .diary-sticker.bottom-left {
+    bottom: -20px;
+    left: -15px;
+    transform: rotate(15deg);
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  
+  @keyframes hamsterPeek {
+    0% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(3px) rotate(3deg); }
+    50% { transform: translateY(1px) rotate(-2deg); }
+    75% { transform: translateY(4px) rotate(1deg); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .entries-list {
+      grid-template-columns: 1fr;
+    }
+    
+    .mood-selection {
+      justify-content: space-around;
+    }
+    
+    .mood-icon img {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Improve touch targets for mobile */
+    .save-entry-button {
+      padding: 1rem 2rem;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    /* Ensure sections have enough spacing on mobile */
+    .diary-section {
+      padding: 1.2rem 0.8rem;
+    }
+    
+    /* Make mood selection more touch-friendly */
+    .mood-option {
+      padding: 0.2rem;
+    }
+    
+    .mood-icon {
+      padding: 0.6rem;
+    }
+    
+    /* Ensure inputs are easy to tap */
+    .section-input {
+      padding: 1rem;
+      min-height: 80px;
+    }
+    
+    /* Make paper style buttons easier to tap */
+    .paper-style-button {
+      width: 36px;
+      height: 36px;
+    }
+
+    /* Header buttons on mobile */
+    .entry-view-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    
+    .entry-view-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .edit-button, 
+    .back-button, 
+    .save-edit-button {
+      width: 100%;
+      justify-content: center;
+      margin-right: 0;
+    }
+    
+    /* Better touch targets for editing */
+    .entry-section-content.editable {
+      min-height: 80px;
+      padding: 1rem;
+    }
+    
+    .entry-view-content.editable {
+      min-height: 180px;
+      padding: 1.5rem 1rem;
+    }
+
+    .delete-confirm-dialog {
+      width: 95%;
+      padding: 15px;
+    }
+    
+    .delete-confirm-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .delete-confirm-button,
+    .delete-cancel-button {
+      width: 100%;
+      padding: 12px 0;
+    }
+  }
+
+  /* Small mobile devices */
+  @media (max-width: 480px) {
+    .diary-header h2 {
+      font-size: 1.6rem;
+    }
+    
+    .diary-entry-form {
+      padding: 1.5rem 1rem;
+    }
+    
+    /* Adjust peeking icons for small screens */
+    .diary-section:not(:last-child) .section-icon,
+    .entry-view-section:not(:last-child) .entry-section-icon {
+      width: 40px !important;
+      height: 40px !important;
+    }
+    
+    /* Ensure section titles don't overlap on small screens */
+    .diary-section:not(:last-child) .section-title {
+      margin-left: 50px;
+    }
+    
+    .entry-view-section:nth-child(-n+3) .entry-section-title {
+      margin-left: 40px !important;
+    }
+    
+    /* Make touch targets larger for mobile */
+    .entry-card {
+      min-height: 180px;
+    }
+    
+    .entry-card-header {
+      padding: 0.8rem;
+    }
+  }
+
+  .diary-entry-view::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/notebook-pattern.png');
+    background-size: 300px;
+    opacity: 0.03;
+    border-radius: inherit;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .skincare-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/skincare-pattern.png');
+    background-size: 200px;
+    opacity: 0.03;
+    border-radius: inherit;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Animation effect for the peekaboo icons */
+  .diary-section:not(:last-child) .section-icon {
+    transform: translateY(0);
+    animation: gentleBob 4s ease-in-out infinite;
+  }
+
+  .diary-section:not(:last-child):hover .section-icon {
+    animation: hamsterPeek 1s ease-in-out;
+  }
+
+  /* Add hover animations for entry view peeking icons */
+  .entry-view-section:first-child .entry-section-icon,
+  .entry-view-section:nth-child(2) .entry-section-icon,
+  .entry-view-section:nth-child(3) .entry-section-icon {
+    animation: gentleBob 4s ease-in-out infinite;
+  }
+
+  .entry-view-section:first-child:hover .entry-section-icon,
+  .entry-view-section:nth-child(2):hover .entry-section-icon,
+  .entry-view-section:nth-child(3):hover .entry-section-icon {
+    animation: hamsterPeek 1s ease-in-out;
+  }
+
+  @keyframes gentleBob {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(3px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+
+  /* Override for the last section (Tomorrow) to keep it normal */
+  .diary-section:last-child {
+    margin-top: 1.2rem; /* Normal spacing */
+  }
+
+  /* Extra specific selectors for gratitude icon */
+  .diary-sections .diary-section:first-of-type .section-icon {
+    top: -4px !important;
+    left: 7px !important;
+    z-index: 1 !important;
+    transition: transform 0.3s ease !important;
+    background-color: transparent;
+  }
+
+  /* Specific fix for the gratitude icon */
+  .diary-section:first-child .section-header .section-icon {
+    width: 48px !important;
+    height: 48px !important;
+    top: -4px !important;
+    left: 7px !important;
+    position: absolute !important;
+    background-color: transparent !important;
+  }
+
+  /* Special fix for entry view gratitude icon */
+  .entry-view-section:first-child .entry-section-header .entry-section-icon {
+    width: 42px !important;
+    height: 42px !important;
+    top: -4px !important;
+    left: 7px !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    background-color: transparent;
+  }
+
+  /* Adjust section title positioning for the sections with peeking icons */
+  .diary-section:not(:last-child) .section-title {
+    margin-left: 60px; /* Make space for the bigger icon */
+  }
+
+  /* Apply consistent positioning to entry view sections */
+  .entry-view-section .entry-section-icon {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: -4px !important;
+    left: 7px !important;
+    z-index: 1;
+  }
+
+  /* Make sure all the section titles are properly positioned */
+  /* Special fix for entry view gratitude icon */
+  .entry-view-section:first-child .entry-section-header .entry-section-icon {
+    width: 42px !important;
+    height: 42px !important;
+    top: -4px !important;
+    left: 7px !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    background-color: transparent;
+  }
+
+  /* Make sure all the section titles are properly positioned */
+  .entry-view-section:nth-child(-n+3) .entry-section-title {
+    margin-left: 45px !important;
+  }
+
+  /* Touch-friendly active states for mobile */
+  @media (hover: none) {
+    /* Override hover effects with active state effects for touch devices */
+    .diary-section:active {
+      transform: scale(0.98);
+    }
+    
+    .mood-option:active .mood-icon {
+      transform: translateY(-3px);
+    }
+    
+    .save-entry-button:active {
+      transform: translateY(-2px);
+      background: linear-gradient(to right, var(--diary-purple), var(--diary-pink));
+    }
+    
+    .entry-card:active {
+      transform: translateY(-5px);
+      border-color: var(--highlight-color);
+    }
+    
+    /* Ensure animations play on tap for mobile */
+    .diary-section:active .section-icon {
+      animation: hamsterPeek 1s ease-in-out !important;
+    }
+    
+    .entry-view-section:active .entry-section-icon {
+      animation: hamsterPeek 1s ease-in-out !important;
+    }
+  }
+
+  /* Reset all hamster icons to ensure consistency */
+  .diary-section .section-icon,
+  .entry-view-section .entry-section-icon {
+    position: absolute !important;
+    top: -4px !important;
+    left: 7px !important;
+    z-index: 1 !important;
+    transition: transform 0.3s ease !important;
+    background-color: transparent !important;
+  }
+
+  /* Ensure gratitude icon specific CSS comes after the general rules */
+  .diary-section:nth-child(1) .section-icon[alt="Gratitude"],
+  .diary-section:first-child .section-header .section-icon,
+  .diary-sections .diary-section:first-of-type .section-icon {
+    width: 48px !important;
+    height: 48px !important;
+    top: -4px !important;
+    left: 7px !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    background-color: transparent !important;
+  }
+
+  /* Achievement icon */
+  .diary-section:nth-child(2) .section-icon[alt="Achievement"] {
+    width: 48px !important;
+    height: 48px !important;
+    top: -4px !important;
+    left: 7px !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    background-color: transparent !important;
+  }
+
+  /* Self Care icon */
+  .diary-section:nth-child(3) .section-icon[alt="Self Care"] {
+    width: 48px !important;
+    height: 48px !important;
+    top: -4px !important;
+    left: 7px !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    background-color: transparent !important;
+  }
+
+  /* Ensure responsive mode has the same positioning */
+  @media (max-width: 768px) {
+    .diary-section:nth-child(1) .section-icon,
+    .diary-section:nth-child(2) .section-icon,
+    .diary-section:nth-child(3) .section-icon {
+      top: -4px !important;
+      left: 7px !important;
+    }
+  }
+
+  /* Add edit button */
+  .edit-button {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    margin-right: 0.8rem;
+  }
+
+  .edit-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+  }
+
+  .edit-button::before {
+    content: '✏️';
+    font-size: 0.9em;
+  }
+
+  /* Styles for editable content */
+  .entry-view-content.editable {
+    outline: none;
+    border: 2px dashed var(--diary-purple);
+    min-height: 150px;
+    padding: calc(2rem - 2px);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .entry-view-content.editable:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 8px rgba(255, 156, 194, 0.2);
+  }
+
+  .entry-section-content.editable {
+    padding: calc(0.8rem - 1px);
+    border: 2px dashed var(--diary-purple);
+    border-radius: 8px;
+    min-height: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    outline: none;
+  }
+
+  .entry-section-content.editable:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 6px rgba(255, 156, 194, 0.15);
+  }
+
+  /* Save edit button - smaller size */
+  .save-edit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(to right, var(--diary-mint), var(--diary-blue));
+    color: var(--text-color);
+    font-weight: 700;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.3s;
+    font-size: 1rem;
+    box-shadow: var(--sticker-shadow);
+    width: auto;
+  }
+
+  .save-edit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(100, 200, 255, 0.3);
+  }
+
+  .save-edit-button:active {
+    transform: translateY(-1px);
+  }
+
+  .save-edit-button::before {
+    content: '✓';
+    font-size: 1rem;
+  }
+
+  /* Mobile styles for save button */
+  @media (max-width: 768px) {
+    .save-edit-button {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  /* Header buttons container */
+  .entry-view-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  /* Entry Card Corner Decoration - using ::after on card-content instead of ::before on entry-card */
+  .entry-card::before {
+    display: none; /* Hide the previous decoration */
+  }
+
+  .entry-card-content::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    background-image: url('../assets/images/corner-deco.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Fix tomorrow goals section padding */
+  .entry-view-section:last-child .entry-section-content {
+    padding-left: 28px;
+  }
+
+  /* Ensure proper alignment with tomorrow icon in entry view */
+  .entry-view-section:last-child .entry-section-icon {
+    position: static !important;
+    margin-right: 8px;
+  }
+
+  /* Fix for section headers */
+  .diary-section h3,
+  .diary-container h3,
+  .diary-form-container h3 {
+    color: var(--text-color) !important;
+    background: none !important;
+    text-align: left !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    width: auto !important;
+  }
+
+  /* Fix for tomorrow field alignment */
+  .diary-form-row {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .diary-tomorrow-field,
+  .diary-selfcare-field,
+  .diary-achievement-field,
+  .diary-gratitude-field {
+    text-align: left !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .diary-tomorrow-field label,
+  .diary-selfcare-field label,
+  .diary-achievement-field label,
+  .diary-gratitude-field label {
+    text-align: left !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Diary-specific section header to avoid conflicts with skincare */
+  .diary-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  /* Section header specific to diary section */
+  .diary-header, 
+  .diary-section-header,
+  .diary-form-header {
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+  }
+
+  /* Section title specific to diary */
+  .diary-section .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  /* Tomorrow field specific alignment */
+  .diary-section:last-child .section-header {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .diary-section:last-child .section-title {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  /* Delete button styling */
+  .delete-button {
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(to right, #ff8989, #ff4d4d);
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(255, 77, 77, 0.3);
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .delete-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 77, 77, 0.3);
+  }
+
+  .delete-button::before {
+    content: '🗑️';
+    margin-right: 5px;
+  }
+
+  /* Delete confirmation dialog */
+  .delete-confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .delete-confirm-dialog {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 85%;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--diary-pink);
+    animation: popIn 0.3s ease-out forwards;
+  }
+
+  .delete-confirm-dialog h4 {
+    color: #ff4d4d;
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  .delete-confirm-dialog p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .delete-confirm-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
+  .delete-confirm-button {
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(to right, #ff8989, #ff4d4d);
+    color: white;
+    border: 2px solid #ff4d4d;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(255, 77, 77, 0.3);
+  }
+
+  .delete-confirm-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 77, 77, 0.3);
+  }
+
+  .delete-cancel-button {
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+    color: #555;
+    border: 2px solid #d0d0d0;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .delete-cancel-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Diary Dark Mode */
+  .dark-mode .diary-container {
+    color: var(--text-color);
+  }
+
+  .dark-mode .diary-entry-form {
+    background-color: var(--container-bg-color) !important;
+    border-color: #4a3d50 !important; /* Darker purple/burgundy */
+  }
+
+  .dark-mode .diary-entry-form::before {
+    background: linear-gradient(to right, #6a2e44, #873b57) !important; /* Darker burgundy gradient */
+  }
+
+  .dark-mode .diary-form-title,
+  .dark-mode .diary-form-subtitle,
+  .dark-mode .mood-label {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .diary-form-title::after {
+    background: linear-gradient(to right, transparent, var(--diary-purple), transparent) !important;
+    opacity: 0.5;
+  }
+
+  .dark-mode .diary-form-subtitle::before {
+    color: var(--diary-pink) !important;
+    opacity: 0.7;
+  }
+
+  .dark-mode .mood-icon {
+    background-color: var(--card-bg-color) !important;
+    border-color: transparent !important;
+  }
+
+  .dark-mode .mood-option:hover .mood-icon {
+    background-color: var(--light-gray) !important;
+  }
+
+  .dark-mode .mood-option input[type="radio"]:checked + .mood-icon {
+    background-color: #4a4a60 !important; /* Slightly darker bg for checked mood */
+    border-color: var(--highlight-color) !important;
+    box-shadow: var(--sticker-shadow) !important;
+  }
+
+  .dark-mode .diary-textarea,
+  .dark-mode .section-input {
+    background-color: var(--input-bg-color) !important;
+    border-color: #4a3d50 !important;
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .diary-textarea:focus,
+  .dark-mode .section-input:focus {
+    border-color: #6a2e44 !important; /* Darker burgundy for focus */
+    box-shadow: 0 0 6px rgba(106, 46, 68, 0.4) !important;
+  }
+
+  .dark-mode .paper-style-button {
+    background-color: var(--card-bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+  }
+
+  .dark-mode .paper-style-button:hover,
+  .dark-mode .paper-style-button.active {
+    background-color: var(--light-gray);
+    border-color: var(--highlight-color);
+  }
+
+  .dark-mode .diary-section {
+    background-color: rgba(40, 30, 35, 0.7) !important; /* Darker, less saturated bg */
+    border-color: #4a3d50 !important;
+  }
+
+  .dark-mode .section-header {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .save-entry-button {
+    background: linear-gradient(to right, #6a2e44, #873b57) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .dark-mode .save-entry-button:hover {
+    background: linear-gradient(to right, #873b57, #a83252) !important;
+  }
+
+  .dark-mode .diary-entries-title {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .diary-entries-title::after {
+    background: linear-gradient(to right, transparent, #6a2e44, transparent) !important;
+    opacity: 0.5;
+  }
+
+  .dark-mode .empty-entries-message {
+    background-color: var(--container-bg-color) !important;
+    border-color: #4a3d50 !important;
+    color: var(--text-color-secondary) !important;
+  }
+
+  .dark-mode .empty-entries-message::before {
+    /* Keep the image visible in dark mode */
+  }
+
+  .dark-mode .entry-card {
+    background-color: var(--card-bg-color) !important;
+    border-color: #4a3d50 !important;
+  }
+
+  .dark-mode .entry-date {
+    color: var(--text-color-secondary) !important;
+  }
+
+  .dark-mode .entry-snippet {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .entry-section-tag {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+  }
+
+  .dark-mode .entry-view-header {
+    border-bottom-color: #4a3d50;
+  }
+
+  .dark-mode .back-button {
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    border-color: var(--border-color);
+  }
+
+  .dark-mode .back-button:hover {
+    background-color: #3a3a5a;
+  }
+
+  .dark-mode .entry-view-content {
+    background-color: var(--input-bg-color) !important;
+    border-color: #4a3d50 !important;
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .entry-view-section {
+    background-color: var(--card-bg-color) !important;
+    border-color: #4a3d50 !important;
+  }
+
+  .dark-mode .entry-section-title {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .entry-section-content {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .delete-button {
+    color: #ff6b6b;
+    background-color: transparent;
+  }
+
+  .dark-mode .delete-confirm-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .dark-mode .delete-confirm-dialog {
+    background-color: var(--container-bg-color);
+  }
+
+  .dark-mode .delete-confirm-dialog h4 {
+    color: var(--text-color);
+  }
+
+  .dark-mode .delete-confirm-dialog p {
+    color: var(--text-color-secondary);
+  }
+
+  .dark-mode .delete-confirm-button {
+    background-color: #ff6b6b;
+  }
+
+  .dark-mode .delete-cancel-button {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+  }
+
+  /* Diary Text Alignment Fix */
+  .diary-textarea.lined-paper {
+    line-height: 32px;
+    padding-top: 3px; /* Adjust this value to shift text down */
+  }
+
+  .dark-mode .diary-textarea.lined-paper {
+    background-image: linear-gradient(rgba(128, 128, 128, 0.2) 1px, transparent 1px); /* Darker lines for dark mode */
+  }
+
+  /* Adjustments for other paper types if needed */
+  .dark-mode .diary-textarea.grid-paper {
+    background-image: linear-gradient(rgba(128, 128, 128, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(128, 128, 128, 0.15) 1px, transparent 1px);
+  }
+
+  .dark-mode .diary-textarea.dot-paper {
+    background-image: radial-gradient(rgba(128, 128, 128, 0.25) 1px, transparent 1px);
+  }

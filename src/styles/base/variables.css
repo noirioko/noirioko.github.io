@@ -1,0 +1,97 @@
+/* YuyuPlanner Base Variables
+ * This file contains all global variables used throughout the application
+ * Consolidating from App.css, kawaii-modules.css, and other module styles
+ */
+
+:root {
+  /* Core color palette */
+  --primary-color: #ffb6c1; /* Sweeter pink */
+  --secondary-color: #a6e1ff; /* Brighter blue */
+  --tertiary-color: #d1f7c4; /* Fresher mint green */
+  --accent-color: #ffd1f5; /* Lavender */
+  --accent-yellow: #fff2b2; /* Soft yellow */
+  
+  /* Text colors */
+  --text-color: #4a4a4a; /* Darker gray for headings */
+  --text-color-secondary: #6d6875; /* Dark gray for content */
+  --text-dark: #333333; /* Very dark text for emphasis */
+  --text-muted: #999999; /* Muted text */
+  --highlight-color: #ff9cc2; /* Vibrant pink */
+  
+  /* Background colors */
+  --white: #ffffff;
+  --light-gray: #f8f8ff; /* Softer light gray */
+  --bg-color: #fcfcff; /* Very light background */
+  --container-bg-color: var(--white);
+  --card-bg-color: var(--white);
+  --input-bg-color: #f5f5f5; /* Light input background */
+  
+  /* Border colors */
+  --border-color: #e0e0e0;
+  --border-color-light: #f0f0f0;
+  
+  /* RGB values for CSS variables */
+  --primary-color-rgb: 255, 182, 193;
+  --highlight-color-rgb: 255, 156, 194;
+  
+  /* Module-specific colors (from skincare.css) */
+  --skincare-pink: #ffcce6;
+  --skincare-blue: #b3e0ff;
+  --skincare-lavender: #e0d0ff;
+  --skincare-mint: #c9f7e7;
+  --skincare-peach: #ffdbc9;
+  --skincare-yellow: #ffe9a3;
+  --skincare-purple: #d9c2ff;
+  
+  /* Kawaii colors (from kawaii-modules.css) */
+  --kawaii-pink: #ffcce6;
+  --kawaii-blue: #ccf2ff;
+  --kawaii-purple: #e6ccff;
+  --kawaii-yellow: #fffacc;
+  --kawaii-mint: #ccffe6;
+  --kawaii-peach: #ffdbc9;
+  --kawaii-lavender: #e0d0ff;
+  
+  /* Background pattern variables */
+  --bg-pattern-color1: var(--accent-yellow);
+  --bg-pattern-color2: var(--accent-color);
+  
+  /* Patterns */
+  --bubble-pattern: radial-gradient(circle, var(--skincare-blue) 1px, transparent 2px);
+  --droplet-pattern: radial-gradient(ellipse at top, var(--skincare-mint) 1px, transparent 3px);
+  --kawaii-lines: linear-gradient(var(--kawaii-pink) 1px, transparent 1px);
+  --kawaii-grid: linear-gradient(var(--kawaii-pink) 1px, transparent 1px),
+                linear-gradient(90deg, var(--kawaii-pink) 1px, transparent 1px);
+  --kawaii-dots: radial-gradient(var(--kawaii-pink) 1px, transparent 1px);
+  
+  /* Shadows */
+  --soft-shadow: 0 4px 10px rgba(234, 174, 207, 0.2);
+  --card-shadow: 0 5px 15px rgba(220, 176, 196, 0.25);
+  --skincare-shadow: 0 6px 15px rgba(201, 247, 231, 0.35);
+  --sticker-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  --kawaii-shadow: 0 6px 15px rgba(255, 182, 193, 0.25);
+  --kawaii-soft-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Fonts */
+  --main-font: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --text-color: #ffffff; /* Pure white for headings in dark mode */
+  --text-color-secondary: #e0e0e0; /* Light gray for content in dark mode */
+  --text-dark: #f0f0f0; /* Slightly dimmer white for emphasis */
+  --text-muted: #b0b0b0; /* Light gray for muted text */
+  --bg-color: #1a1a2e;
+  --light-gray: #2a2a3e;
+  --white: #252540;
+  --container-bg-color: #2a2a45; /* Lighter container color */
+  --card-bg-color: #2a2a45;
+  --input-bg-color: #333350;
+  --border-color: #333355;
+  --border-color-light: #3a3a5a;
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  --soft-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --bg-pattern-color1: rgba(255, 242, 178, 0.15);
+  --bg-pattern-color2: rgba(255, 209, 245, 0.15);
+} 

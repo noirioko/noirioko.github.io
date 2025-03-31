@@ -1,0 +1,103 @@
+.whiteboard-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+  padding: 20px;
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #f0f0f0;
+  /* Make it span the width of 2 cards */
+  max-width: calc(100% - 20px);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.whiteboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.whiteboard-title {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.erase-button {
+  background-color: #f8f8f8;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.erase-button:hover {
+  background-color: #ff9999;
+  color: white;
+  border-color: #ff9999;
+}
+
+.whiteboard-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  background-color: #fffaf0; /* Slightly off-white for a paper-like feel */
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: none;
+  transition: all 0.3s;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Increase height */
+  min-height: 180px;
+}
+
+.whiteboard-textarea:focus {
+  outline: none;
+  border-color: #ffcce6;
+  box-shadow: 0 0 0 2px rgba(255, 204, 230, 0.2);
+}
+
+/* Add some lines to make it look like paper */
+.whiteboard-textarea {
+  background-image: linear-gradient(#f0f0f0 1px, transparent 1px);
+  background-size: 100% 1.5rem;
+  line-height: 1.5rem;
+}
+
+/* Responsive adjustments - make it full width on mobile */
+@media (max-width: 768px) {
+  .whiteboard-container {
+    padding: 15px;
+    width: calc(100% - 10px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .whiteboard-textarea {
+    min-height: 200px; /* Even taller on mobile */
+  }
+}
+
+/* Full width on smaller screens */
+@media (max-width: 480px) {
+  .whiteboard-container {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .whiteboard-textarea {
+    min-height: 220px;
+  }
+} 

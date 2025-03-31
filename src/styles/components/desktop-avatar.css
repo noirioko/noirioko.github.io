@@ -1,0 +1,251 @@
+/* Desktop Avatar Card Styling */
+.desktop-avatar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.15);
+  width: 240px;
+  position: fixed;
+  top: 90px;
+  left: 20px;
+  z-index: 100; /* Increased z-index to ensure it floats above content */
+  display: none; /* Hidden by default on mobile */
+  border: 2px solid var(--kawaii-pink);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Accent bar for avatar card */
+.desktop-avatar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to right, var(--kawaii-pink), var(--kawaii-purple), var(--kawaii-blue));
+  z-index: 1;
+}
+
+/* Toggle button to collapse sidebar */
+.desktop-avatar-collapse-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: 2px solid var(--kawaii-pink);
+  color: var(--kawaii-pink);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(255, 182, 193, 0.2);
+}
+
+.desktop-avatar-collapse-btn:hover {
+  background-color: var(--kawaii-pink);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Collapsed state */
+.desktop-avatar-card.collapsed {
+  width: 80px;
+  padding: 1rem 0.8rem;
+}
+
+.desktop-avatar-card.collapsed .desktop-avatar-name,
+.desktop-avatar-card.collapsed .desktop-avatar-title,
+.desktop-avatar-card.collapsed .desktop-sidebar-section,
+.desktop-avatar-card.collapsed .desktop-sidebar-label {
+  display: none;
+}
+
+.desktop-avatar-card.collapsed .desktop-avatar-container {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+.desktop-avatar-card.collapsed .desktop-avatar-headgear {
+  width: 50px;
+  height: 50px;
+  top: -15px;
+}
+
+/* Improved avatar positioning in collapsed state */
+.desktop-avatar-card.collapsed .avatar-bar-link {
+  display: flex;
+  justify-content: center;
+}
+
+.desktop-avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px;
+}
+
+.desktop-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+}
+
+.desktop-avatar-headgear {
+  position: absolute;
+  top: -20px;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.desktop-avatar-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+.desktop-avatar-title {
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-bottom: 15px;
+}
+
+.avatar-bar-link {
+  text-decoration: none;
+  display: block;
+}
+
+/* Desktop currency section */
+.desktop-sidebar-section {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.desktop-sidebar-label {
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.desktop-sidebar-currency {
+  background-color: var(--light-gray);
+  border-radius: 15px;
+  padding: 0.8rem 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border-left: 3px solid var(--kawaii-pink);
+}
+
+/* Points currency styling */
+.desktop-currency-item.points .desktop-sidebar-currency {
+  border-left-color: var(--kawaii-pink);
+}
+
+/* Credits currency styling */
+.desktop-currency-item.credits .desktop-sidebar-currency {
+  border-left-color: var(--kawaii-purple);
+}
+
+.desktop-currency-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.desktop-currency-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.desktop-currency-value {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.desktop-currency-suffix {
+  font-size: 0.8rem;
+  color: var(--text-color-secondary);
+  margin-left: 0.3rem;
+}
+
+/* Media query for desktop */
+@media (min-width: 1024px) {
+  .desktop-avatar-card {
+    display: flex;
+  }
+}
+
+/* Dark mode support */
+.dark-mode .desktop-avatar-card {
+  background-color: var(--container-bg-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-color: var(--border-color);
+}
+
+.dark-mode .desktop-avatar-collapse-btn {
+  background-color: var(--container-bg-color);
+  border-color: var(--kawaii-pink);
+  color: var(--kawaii-pink);
+}
+
+.dark-mode .desktop-avatar-collapse-btn:hover {
+  background-color: var(--kawaii-pink);
+  color: var(--container-bg-color);
+}
+
+.dark-mode .desktop-sidebar-currency {
+  background-color: #3a3a5f; /* Lighter contrast background for dark mode */
+  border-left: 3px solid var(--highlight-color);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .desktop-sidebar-label {
+  color: #d0d0d0; /* Brighter text for labels in dark mode */
+}
+
+.dark-mode .desktop-currency-value {
+  color: #ffffff; /* White text for currency values in dark mode */
+}
+
+.dark-mode .desktop-currency-suffix {
+  color: #b0b0c0; /* Lighter suffix text in dark mode */
+}
+
+/* Make sure main content doesn't get pushed by the sidebar */
+.App-main-content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .App-main-content {
+    margin-left: 0; /* No default margin */
+    width: calc(100% - 0px);
+  }
+} 

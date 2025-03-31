@@ -1,0 +1,117 @@
+/* Fix for dark mode - ensure headgear collection text is readable */
+.dark-mode .avatar-module h2,
+.dark-mode .headgear-inventory h2,
+html.dark-mode body .avatar-module h2,
+html.dark-mode body .headgear-inventory h2 {
+  color: #f0f0f0 !important;
+}
+
+.dark-mode .headgear-name,
+.dark-mode .headgear-description,
+.dark-mode .headgear-item p,
+.dark-mode .headgear-rarity,
+html.dark-mode body .headgear-name,
+html.dark-mode body .headgear-description,
+html.dark-mode body .headgear-item p,
+html.dark-mode body .headgear-rarity {
+  color: #f0f0f0 !important;
+}
+
+.dark-mode .empty-collection,
+html.dark-mode body .empty-collection {
+  color: #d0d0d0 !important;
+}
+
+.dark-mode .empty-collection a,
+html.dark-mode body .empty-collection a {
+  color: #ff99cc !important;
+}
+
+/* Direct headgear title fix with extremely high specificity */
+.avatar-module .headgear-inventory h2,
+html body .avatar-module .headgear-inventory h2,
+html.dark-mode body .avatar-module .headgear-inventory h2,
+html body.dark-mode .avatar-module .headgear-inventory h2,
+html.dark-mode .avatar-module .headgear-inventory h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #f0f0f0 !important;
+  font-size: 1.5rem;
+}
+
+.avatar-module .headgear-name,
+.avatar-module .headgear-description,
+.avatar-module .headgear-item p,
+.avatar-module .headgear-rarity,
+html body.dark-mode .avatar-module .headgear-name,
+html body.dark-mode .avatar-module .headgear-description,
+html body.dark-mode .avatar-module .headgear-item p,
+html body.dark-mode .avatar-module .headgear-rarity {
+  color: #f0f0f0 !important;
+}
+
+.avatar-module .empty-collection,
+html body.dark-mode .avatar-module .empty-collection {
+  color: #d0d0d0 !important;
+}
+
+.avatar-module .empty-collection a,
+html body.dark-mode .avatar-module .empty-collection a {
+  color: #ff99cc !important;
+}
+
+/* Dark mode styles for avatar module */
+.dark-mode .avatar-module {
+  background-color: transparent;
+}
+
+.dark-mode .avatar-module .headgear-inventory {
+  background-color: var(--container-bg-color);
+  border-color: var(--border-color);
+}
+
+.dark-mode .avatar-module .headgear-inventory h2 {
+  color: #ffffff;
+}
+
+.dark-mode .avatar-module .headgear-item {
+  background-color: var(--card-bg-color);
+  border-color: var(--border-color);
+}
+
+.dark-mode .avatar-module .headgear-name {
+  color: #ffffff;
+}
+
+.dark-mode .avatar-module .headgear-description {
+  color: #e0e0e0;
+}
+
+.dark-mode .avatar-module .headgear-rarity {
+  color: #ffffff;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dark-mode .avatar-module .empty-collection {
+  color: #e0e0e0;
+}
+
+.dark-mode .avatar-module .empty-collection a {
+  color: #ff99cc;
+}
+
+.dark-mode .avatar-module .headgear-equip-button {
+  background-color: var(--light-gray);
+  color: var(--text-color-secondary);
+  border-color: var(--border-color);
+}
+
+.dark-mode .avatar-module .headgear-equip-button:hover {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+.dark-mode .avatar-module .headgear-equip-button.equipped {
+  background-color: var(--highlight-color);
+  color: white;
+} 

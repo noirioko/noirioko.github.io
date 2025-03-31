@@ -1,0 +1,107 @@
+/* 
+ * FIXES.CSS
+ * This file contains important fixes and overrides that should take precedence.
+ * It should be imported LAST in index.tsx
+ */
+
+/* Fix for Skincare module header icon */
+.skincare-header h2::before,
+.skincare-module .module-header h2::before,
+.skincare-container .module-header h2::before,
+.skincare-header.module-header h2::before,
+.module-header.skincare-header h2::before {
+  background-image: url('../assets/images/jaehyun_skincare_icon.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  display: inline-block !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin-right: 15px !important;
+  content: '' !important;
+}
+
+/* Fix profile bar avatar to show name and title properly */
+.avatar-bar-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 90px !important;
+}
+
+.avatar-bar-image {
+  width: 80px !important;
+  height: 80px !important;
+  margin-bottom: 5px !important;
+}
+
+.avatar-bar-headgear {
+  position: absolute !important;
+  top: -2px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 60px !important;
+  height: auto !important;
+}
+
+.avatar-bar-name, 
+.avatar-bar-title {
+  width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+.avatar-bar-name {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  margin-top: 5px !important;
+  margin-bottom: 2px !important;
+}
+
+.avatar-bar-title {
+  font-size: 0.8rem !important;
+  margin-top: 0 !important;
+}
+
+/* Fix for mobile view */
+@media (max-width: 480px) {
+  .skincare-header h2::before,
+  .skincare-module .module-header h2::before,
+  .skincare-container .module-header h2::before {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 10px !important;
+  }
+  
+  .currency-bar-value {
+    max-width: 100px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Fix module headers to be centered on mobile */
+  .module-header,
+  .diary-header,
+  .skincare-header,
+  .cleaning-header,
+  .rewards-header,
+  .vanity-header,
+  .avatar-header {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  .module-header h2,
+  .diary-header h2,
+  .skincare-header h2,
+  .cleaning-header h2,
+  .rewards-header h2,
+  .vanity-header h2,
+  .avatar-header h2 {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+} 

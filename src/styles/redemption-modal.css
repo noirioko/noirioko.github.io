@@ -1,0 +1,147 @@
+.redemption-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.redemption-modal {
+  background: white;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.redemption-modal-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.celebration-text {
+  margin-top: 0;
+  color: var(--highlight-color);
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.redemption-modal h3 {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.redemption-modal p {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.redemption-modal .form-field {
+  margin-bottom: 1.5rem;
+}
+
+.redemption-modal .form-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.reward-note-input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 2px solid var(--light-gray);
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.reward-note-input:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.primary-button, .secondary-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.primary-button {
+  background-color: var(--highlight-color);
+  color: white;
+  box-shadow: 0 4px 10px rgba(var(--highlight-color-rgb), 0.3);
+}
+
+.secondary-button {
+  background-color: var(--light-gray);
+  color: var(--text-color);
+}
+
+.primary-button:hover, .secondary-button:hover {
+  transform: translateY(-2px);
+}
+
+.primary-button:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 6px 15px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.secondary-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .redemption-modal {
+    width: 95%;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+  }
+  
+  .primary-button, .secondary-button {
+    width: 100%;
+  }
+} 
