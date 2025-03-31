@@ -2,6 +2,7 @@
   "name": "yuyuplanner",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://noirioko.github.io",
   "dependencies": {
     "@capacitor/android": "^7.1.0",
     "@capacitor/cli": "^7.1.0",
